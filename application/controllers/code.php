@@ -190,6 +190,7 @@ class Code extends CI_Controller{
 			$filename=$this->input->post('filename');
 			$name='glyphicons-28-search5.png';
 			$this->load->helper('download');
+			
 			$data = file_get_contents("./uploads/{$name}"); // Read the file's contents
  			force_download($name, $data); 
 
