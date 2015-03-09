@@ -1,0 +1,111 @@
+	#header{
+			color:white;
+			background:#1A1A1A;
+			height:160px;
+
+			border-bottom:2px solid #F65A59;
+
+		}
+		body{
+			background:#F7F7F9;
+			font-family:"맑은고딕","Malgun Gothic";
+			font-weight:bold;
+		}
+		#nav{
+			color:white;
+		}
+		#nav a{
+			color:white;
+		}
+		#calendar {
+		
+			max-width: 800px;
+			min-width: 800px;
+			height:380px;
+			margin: 0 auto;
+			
+			position:absolute;
+			top:180px;
+		}
+		#board table{
+			width:700px;
+			height:200px;
+			border-collapse:collapse;
+		}
+		#board table th{
+			color:black;
+		}
+		#board table tr{
+			height:30px;
+		}	
+
+		.fc-sun{color:red;}
+		.fc-sat {color:#007dc3}
+
+		#noticeView table{
+			border-collapse:collapse;
+			position:absolute;
+			left:500px;
+			top:500px;
+		}
+		#lectureView table{
+			border-collapse:collapse;
+			position:absolute;
+			left:950px;
+			top:500px;
+		}
+		#mypage{
+
+			position:absolute;
+			top:10px;
+			width:200px;
+			height:100px;
+			color:white;
+			
+		}
+		
+		#menu{
+			position:absolute;
+			top:125px;
+		}
+		#menu li{
+			width:200px;
+			height:30px;
+			float:left;
+			list-style:none;
+			text-align:center;
+		}
+		#menu_board_sub{
+			background:#342E2E;
+			position:absolute;
+			top:155px;
+			height:100px;
+			z-index:5;
+		}
+		#menu_board_sub li{
+			width:200px;
+			list-style:none;
+			text-align:center;
+			float:none;
+			padding:10px;
+			border-top:1px solid black;
+			height:50px;
+			
+
+		}
+		#menu_board_sub li:hover{
+			cursor:hand;
+			cursor:pointer;
+			background:#272222;
+		}
+		#menu li:hover{
+			background:#342E2E;
+			cursor:hand;
+			cursor:pointer;
+		}
+		
+		a{
+			text-decoration:none;
+		}
+
+		

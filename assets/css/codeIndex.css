@@ -1,0 +1,58 @@
+
+		body{
+			background:rgb(26, 26, 26);
+			font-family: 'Nanum Gothic', sans-serif;
+			color:gray;
+		}
+		table th{
+			text-align:center;
+		}
+		#header{
+			background:rgb(26, 26, 26);
+			border-bottom:2px solid white;
+			margin-top:10px;
+		}
+		#nav{
+			position:absolute;
+			min-width:1300px;
+			
+		}
+		#login{
+			width:1200px;
+			position:absolute;
+			top: 200px;
+		}
+		#login li{
+			padding-top:60px;
+		}
+		#logo{
+			width:1200px;
+			position:absolute;
+			top: 200px;
+		}
+
+		#nav ul li{
+
+			width:270px;
+			height:220px;
+			list-style:none;
+			float:left;
+			color:white;
+			border-radius:50px;
+			margin:5px;
+			
+
+		}
+		#nav ul li:hover{
+			background:rgba(63, 55, 55, 0.72);
+			cursor:hand;
+			cursor:pointer;
+			color:white;
+		}
+		
+		#footer{
+			position:absolute;
+			top:600px;
+			width: 1300px;
+
+		}

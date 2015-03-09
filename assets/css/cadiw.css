@@ -1,0 +1,198 @@
+body{
+	background:#CFCFCF;
+	font-family:"맑은고딕","Malgun Gothic";
+	font-weight:bold;
+}
+a{
+	text-decoration:none;
+}
+
+#wrap{
+	position:relative;
+	background:white;
+	margin:auto;
+	margin-top:50px;
+	border-radius:20px;
+	height:800px;
+}
+#header{
+	position:absolute;
+	color:white;
+	background:#1A1A1A;
+	height:160px;
+	border-bottom:2px solid #F65A59;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	z-index:1;
+
+}
+#mypage{
+
+	top:30px;
+	right:30px;
+	position:absolute;
+	width:200px;
+	height:100px;
+	
+	z-index:4;
+}
+#mypage table{
+	color:white;
+	border:1px solid white;
+}
+#menu{
+	position:absolute;
+	top:120px;
+	color:white;
+	z-index:5;
+}
+#menu li{
+	width:200px;
+	height:30px;
+	float:left;
+	list-style:none;
+	text-align:center;
+}
+#menu li:hover{
+	background:#342E2E;
+	cursor:hand;
+	cursor:pointer;
+}
+#menu a{
+	color:white;
+}
+#menu a:hover{
+	text-decoration:none;
+}
+#menu_board_sub{
+
+	background:#342E2E;
+	position:absolute;
+	top:30px;
+	width:200px;
+	height:100px;
+	z-index:5;
+}
+#menu_board_sub li{
+	height:50px;
+	padding-top:10px;
+}
+#menu_board_sub li:hover{
+	cursor:hand;
+	cursor:pointer;
+	background:#272222;
+}
+#article{
+	position:absolute;
+	width:700px;
+	top:200px;
+}
+
+#calendar {
+	color:black;
+}
+#board{
+	
+	height:300px;
+	color:black;
+}
+#board table{
+	
+	margin-top:20px;
+	width:700px ;
+
+}
+
+#board table tr:hover{
+	background:#F7F7F7;
+}
+#board table a:hover{
+	color:orange;
+}
+#board table th{
+	height:30px;
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+}
+#board table td{
+	border-bottom:1px solid black;
+	height:25px;
+}
+#board table th,td{
+
+	text-align:center;
+}
+#board table td:nth-child(2){
+	width:300px;
+}
+#boardWrite{
+	width:700px;
+	height:400px;
+
+}
+#boardWrite th{
+	text-align:center;
+}
+#boardWrite tr:nth-child(1){
+	height:30px;
+
+}
+
+#boardWrite tr:nth-child(3){
+	height:30px;
+	text-align:right;
+}
+#boardView{
+	width:700px;
+	height:450px;
+}
+#boardView tr:nth-child(1){
+	height:30px;
+}
+#boardView tr:nth-child(2){
+	height:30px;
+}
+#boardView tr:nth-child(3){
+	height:30px;
+}
+#boardView tr:nth-child(4){
+	height:30px;
+}
+
+#page{
+	width:400px;
+	height:30px;
+	
+	
+	
+}
+.page_num{
+	
+	display:inline-block;
+	width:30px;
+	
+}
+#board_write_btn{
+	position:absolute;
+	right:20px;
+}
+.jqte{
+	height:100%;
+	border:0px;
+	text-align:left;
+}
+ .jqte_tool jqte_tool_1 unselectable{
+ 	height:10%;
+ }
+ .jqte_tool.jqte_tool_1 .jqte_tool_label{
+ 	width:65 !important;
+ 	height:25px;
+ }
+
+ 
+ 
+
+
+.fc-sun{color:red;}
+.fc-sat {color:#007dc3}
+
