@@ -78,9 +78,7 @@ function commentRemove(bid,cid){
 	})
 }
 function fileDownload(filename){
-	$.post('/index.php/code/fileDownload',{filename:filename},function(data){
-		$('#article').html('<?'+data+'?>');
-	})
+	location.href='/index.php/code/fileDownload/'+filename;
 	
 }
 

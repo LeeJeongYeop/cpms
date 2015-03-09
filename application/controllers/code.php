@@ -141,12 +141,13 @@ class Code extends CI_Controller{
 			$config['max_size']	= '100';
 			$config['max_width']  = '1024';
 			$config['max_height']  = '768';
+			$config['encrypt_name'] = TRUE;
 			$this->load->library('upload', $config);
 			
 			if ( ! $this->upload->do_upload() && !strstr($this->upload->display_errors(),"You did not select a file to upload."))
 			{
 				$error = array('error' => $this->upload->display_errors());
-				echo "<script>alert({$error})</script>";
+				echo "<script>alert('오류')</script>";
 				redirect('/code/boardWrite','refresh');
 			}	
 			else
@@ -155,8 +156,9 @@ class Code extends CI_Controller{
 				$data = array('upload_data' => $this->upload->data());
 				$btitle=$this->input->post('btitle');
 				$bcontent=$this->input->post('bcontent');
+				$orig_name=$data['upload_data']['orig_name'];
 				$file_name=$data['upload_data']['file_name'];
-				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$bcontent);
+				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$orig_name,$bcontent);
 				
 
 				echo "<script>alert('글이 등록되었습니다')</script>";
@@ -184,15 +186,15 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function fileDownload(){
+	public function fileDownload($filename){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
-			$filename=$this->input->post('filename');
-			$name='glyphicons-28-search5.png';
+			
+			
 			$this->load->helper('download');
 			
-			$data = file_get_contents("./uploads/{$name}"); // Read the file's contents
- 			force_download($name, $data); 
+			$data = file_get_contents("./uploads/{$filename}"); // Read the file's contents
+ 			force_download($filename, $data); 
 
 		}
 		else{

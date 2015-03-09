@@ -9,11 +9,12 @@ class CodeModel extends CI_Model{
 
 		return $this->db->query($strQuery)->result();
 	}
-	function boardInput($uid,$btitle,$file_name,$bcontent){
+	function boardInput($uid,$btitle,$file_name,$orig_name,$bcontent){
 		$insertdb=array(
 			'uid'=>$uid,
 			'btitle'=>$btitle,
 			'files'=>$file_name,
+			'orig_name'=>$orig_name,
 			'bcontent'=>$bcontent
 			);
 		$this->db->insert('board',$insertdb);
@@ -34,7 +35,7 @@ class CodeModel extends CI_Model{
 	}
 	function boardView($no){
 		$this->db->where('bid',$no);
-		$this->db->select('uid,bid,btitle,files,name,bcontent,bdate');
+		$this->db->select('uid,bid,btitle,files,orig_name,name,bcontent,bdate');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
 		return $this->db->get()->result();

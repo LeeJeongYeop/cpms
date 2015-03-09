@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<th>파일</th>
-			<td><a href="javascript:fileDownload('<?=$list[0]->files?>')"><?=$list[0]->files?></a></td>
+			<td><a href="javascript:fileDownload('<?=$list[0]->files?>')"><?=$list[0]->orig_name?></a></td>
 		</tr>
 		<tr>
 			<th>내용</th>
