@@ -172,6 +172,9 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
+	public function test(){
+		echo "ff";
+	}
 	public function boardView($no){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){

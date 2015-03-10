@@ -20,15 +20,7 @@
 			})
 
 
-			$('#boardWriteForm').submit(function(){
-
-				if($('input[name=btitle]').val().trim()==''){
-					alert('제목을 입력하세요');
-					return false;
-				}
-				
-				
-			})
+			
 			
 			$('#board_search').keypress(function(){
 
@@ -52,6 +44,8 @@
 				})
 				
 			})
+
+			
 
 
 
@@ -77,10 +71,7 @@ function commentRemove(bid,cid){
 		$('#commentView').load('/index.php/code/commentView',{bid:bid});
 	})
 }
-function fileDownload(filename){
-	location.href='/index.php/code/fileDownload/'+filename;
-	
-}
+
 
 
 

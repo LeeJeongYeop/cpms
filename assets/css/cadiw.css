@@ -138,9 +138,9 @@ a{
 
 }
 
-#boardWrite tr:nth-child(3){
+#boardWrite tr:nth-child(2){
 	height:30px;
-	text-align:right;
+	
 }
 #boardView{
 	width:700px;
@@ -180,9 +180,11 @@ a{
 	height:100%;
 	border:0px;
 	text-align:left;
+	
 }
  .jqte_tool jqte_tool_1 unselectable{
  	height:10%;
+
  }
  .jqte_tool.jqte_tool_1 .jqte_tool_label{
  	width:65 !important;
