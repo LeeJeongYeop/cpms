@@ -58,7 +58,7 @@
      function goStartMode(){
     	 var sSrc = welBtnConfirm.attr("src")|| "";
     	 if(sSrc.indexOf("btn_confirm2.png") < 0 ){
-    		 welBtnConfirm.attr("src","../../assets/img/photoQuickPopup/btn_confirm2.png");
+    		 welBtnConfirm.attr("src","../../assets/image/photoQuickPopup/btn_confirm2.png");
     		 fnUploadImage.attach(welBtnConfirm.$value(), "click");
     	 }
      } 
@@ -70,7 +70,7 @@
     	 var sSrc = welBtnConfirm.attr("src")|| "";
     	 if(sSrc.indexOf("btn_confirm2.png") >= 0 ){
     		 fnUploadImage.detach(welBtnConfirm.$value(), "click");
-	    	 welBtnConfirm.attr("src","../../assets/img/photoQuickPopup/btn_confirm.png");
+	    	 welBtnConfirm.attr("src","../../assets/image/photoQuickPopup/btn_confirm.png");
     	 }
      }   
 	
