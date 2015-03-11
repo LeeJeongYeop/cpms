@@ -23,7 +23,7 @@
 		<div id="memberInsert">
 			<hr>
 			<h3>회원 등록</h3>
-			<table id="memberInsertTable">
+			<table id="memberInsertTable" width="600px" height="100px">
 				<tr>
 					<th>아이디</th>
 					<td><input type="text" id="id" name="id"></td>

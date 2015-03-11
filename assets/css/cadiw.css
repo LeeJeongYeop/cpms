@@ -6,6 +6,9 @@ body{
 a{
 	text-decoration:none;
 }
+table th{
+	text-align: center;
+}
 
 #wrap{
 	position:relative;
@@ -198,3 +201,6 @@ a{
 .fc-sun{color:red;}
 .fc-sat {color:#007dc3}
 
+.openWindow{
+	background-color: white;
+}
