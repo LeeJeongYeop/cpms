@@ -49,7 +49,7 @@
 			<option>제목+내용</option>
 			<option>작성자</option>
 		</select>
-		<input type="search" id="board_search"> &nbsp;<button class="btn-btn default btn-sm" onclick="board_search()"><span class='glyphicon glyphicon-search'>검색</span></button>
+		<input type="search" id="board_search"> &nbsp;<button class="btn-btn default btn-sm" onclick="board_search('free')"><span class='glyphicon glyphicon-search'>검색</span></button>
 		<button id="board_write_btn" class="btn-btn default btn-sm" onclick="location.href='/index.php/code/boardWrite'"><span class='glyphicon glyphicon-edit'>글쓰기</span></button>
 		</center>
 </div><!-- div id='article'-->

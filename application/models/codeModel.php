@@ -9,17 +9,19 @@ class CodeModel extends CI_Model{
 
 		return $this->db->query($strQuery)->result();
 	}
-	function boardInput($uid,$btitle,$file_name,$orig_name,$bcontent){
+	function boardInput($uid,$btitle,$file_name,$orig_name,$bcontent,$category){
 		$insertdb=array(
 			'uid'=>$uid,
 			'btitle'=>$btitle,
 			'files'=>$file_name,
 			'orig_name'=>$orig_name,
-			'bcontent'=>$bcontent
+			'bcontent'=>$bcontent,
+			'category'=>$category
 			);
 		$this->db->insert('board',$insertdb);
 	}
-	function board($num,$local){
+	function board($num,$local,$category){
+		$this->db->where('category',$category);
 		$this->db->limit($num,$local);
 		$this->db->select('bid,btitle,name,bdate');
 		$this->db->from('board');
@@ -27,7 +29,8 @@ class CodeModel extends CI_Model{
 		$this->db->order_by("bid", "desc"); 
 		return $this->db->get()->result();
 	}
-	function boardCount(){
+	function boardCount($category){
+		$this->db->where('category',$category);
 		$this->db->select('bid,btitle,name,bdate');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
@@ -49,18 +52,23 @@ class CodeModel extends CI_Model{
 		$this->db->where('bid',$no);
 		$this->db->delete('board');
 	}
-	function boardSearchAll($num,$local,$search){
+	function boardSearchAll($category,$num,$local,$search){
+		
+		$where= "category ='".$category."' and btitle like '%".$search."%' or category='".$category."' and bcontent like '%".$search."%' ";
+		$this->db->where($where);
 		$this->db->limit($num,$local);
 		$this->db->select('bid,btitle,name,bdate');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
-		$this->db->like('btitle',$search);
-		$this->db->or_like('bcontent',$search);
+		
+		
 		$this->db->order_by("bid", "desc"); 
 		return $this->db->get()->result();
 	}
-	function boardSearchTitle($num,$local,$search){
+	function boardSearchTitle($category,$num,$local,$search){
 		$this->db->limit($num,$local);
+		$this->db->where('category',$category);
+		
 		$this->db->select('bid,btitle,name,bdate');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
@@ -68,14 +76,17 @@ class CodeModel extends CI_Model{
 		$this->db->order_by("bid", "desc"); 
 		return $this->db->get()->result();
 	}
-	function boardSearchAllCount($search){
+	function boardSearchAllCount($category,$search){
+		$where= "category ='".$category."' and btitle like '%".$search."%' or category ='".$category."' and bcontent like '%".$search."%' ";
+		$this->db->where($where);
+		
 		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		$this->db->like('btitle',$search);
-		$this->db->or_like('bcontent',$search);
+		
+
 		return $this->db->count_all_results();
 	}
-	function boardSearchTitleCount($search){
+	function boardSearchTitleCount($category,$search){
+		$this->db->where('category',$category);
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
 		$this->db->like('name',$search);

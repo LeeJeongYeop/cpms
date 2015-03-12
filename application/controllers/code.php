@@ -72,11 +72,11 @@ class Code extends CI_Controller{
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			
-
+			$category='free';
 			$data['page_num'] = $this->uri->segment(3,0);
 			$data['per_page']=10;
-			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num']);
-			$data['total_rows']=$this->codeModel->boardCount();
+			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num'],$category);
+			$data['total_rows']=$this->codeModel->boardCount($category);
 
 			$comment=$this->codeModel->commentCount();
 			
@@ -158,7 +158,8 @@ class Code extends CI_Controller{
 				$bcontent=$this->input->post('bcontent');
 				$orig_name=$data['upload_data']['orig_name'];
 				$file_name=$data['upload_data']['file_name'];
-				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$orig_name,$bcontent);
+				$category='free';
+				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$orig_name,$bcontent,$category);
 				
 
 				echo "<script>alert('글이 등록되었습니다')</script>";
@@ -172,9 +173,7 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function test(){
-		echo "ff";
-	}
+	
 	public function boardView($no){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
@@ -245,7 +244,7 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function boardSearch($option,$search){
+	public function boardSearch($category,$option,$search){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$o=$option;
@@ -253,17 +252,18 @@ class Code extends CI_Controller{
 			$option=urldecode($option);
 			$search=urldecode($search);
 
-			$data['page_num'] = $this->uri->segment(5,0);
+			$data['page_num'] = $this->uri->segment(6,0);
 			$data['per_page']=10;
 			if($option=='제목+내용'){
-				$data['list']=$this->codeModel->boardSearchAll($data['per_page'],$data['page_num'],$search);
-				$data['total_rows']=$this->codeModel->boardSearchAllCount($search);
+				$data['list']=$this->codeModel->boardSearchAll($category,$data['per_page'],$data['page_num'],$search);
+				$data['total_rows']=$this->codeModel->boardSearchAllCount($category,$search);
 			}
 			else{
-				$data['list']=$this->codeModel->boardSearchTitle($data['per_page'],$data['page_num'],$search);
-				$data['total_rows']=$this->codeModel->boardSearchTitleCount($search);
+				$data['list']=$this->codeModel->boardSearchTitle($category,$data['per_page'],$data['page_num'],$search);
+				$data['total_rows']=$this->codeModel->boardSearchTitleCount($category,$search);
 			}
-
+			
+			
 			$comment=$this->codeModel->commentCount();
 			$comment1='';
 			for($i=0;$i<count($data['list']);$i++){
@@ -278,10 +278,10 @@ class Code extends CI_Controller{
 			
 			$this->load->library('pagination');
 			$config['full_tag_open'] = '<div id="page">';
-			$config['base_url']='/index.php/code/boardSearch/'.$o.'/'.$s.'';
+			$config['base_url']='/index.php/code/boardSearch/'.$category.'/'.$o.'/'.$s.'';
 			$config['total_rows']=$data['total_rows'];
 			$config['per_page'] = $data['per_page'];
-			$config['uri_segment'] = 5;
+			$config['uri_segment'] = 6;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
          	$config['next_tag_close'] = '</div>';
