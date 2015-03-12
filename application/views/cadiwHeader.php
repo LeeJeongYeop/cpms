@@ -18,7 +18,7 @@
 	<script src='/assets/js/jquery.min.js'></script>
 	<script src='/assets/js/fullcalendar.min.js'></script>
 	<script src='/assets/js/lang-all.js'></script>
-	<script type="text/javascript" src="/assets/js/jquery-te-1.4.0.min.js" charset="utf-8"></script>
+	
 	<script type="text/javascript" src="/assets/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script>
 		var uauth='<?=$udata['uauth']?>';

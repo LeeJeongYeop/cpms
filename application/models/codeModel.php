@@ -43,10 +43,18 @@ class CodeModel extends CI_Model{
 		$this->db->join('member','member.id=board.uid');
 		return $this->db->get()->result();
 	}
-	function boardUpdate($bid,$bcontent){
-		$data=array('bcontent'=>$bcontent);
+	function boardUpdate($bid,$bcontent,$orig_name,$file_name){
+		$data=array('bcontent' =>$bcontent,
+					'orig_name' =>$orig_name,
+					'files' =>$file_name);
 		$this->db->where('bid',$bid);
 		$this->db->update('board',$data);
+	}
+	function boardCategory($bid){
+		$this->db->where('bid',$bid);
+		$this->db->select('category');
+		$this->db->from('board');
+		return $this->db->get()->result();
 	}
 	function boardDelete($no){
 		$this->db->where('bid',$no);

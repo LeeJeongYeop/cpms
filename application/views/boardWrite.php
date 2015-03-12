@@ -2,7 +2,7 @@
 <div id='article'>
 <center>
 	<?php echo $error;?>
-	<form id='boardWriteForm' action='/index.php/code/boardInput' method='post' enctype="multipart/form-data" >
+	<form id='boardWriteForm' action='/index.php/code/boardInput/free' method='post' enctype="multipart/form-data" >
 	<table border id='boardWrite'>
 		<tr>
 			<th>제목</th>

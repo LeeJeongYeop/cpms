@@ -1,19 +1,21 @@
 
 <div id='article'>
 <center>
-	<form id='boardWriteForm' action='/index.php/code/boardUpdateSuccess' method='post' enctype="multipart/form-data">
+	<?php echo $error;?>
+	<form id='boardWriteForm' action='/index.php/code/boardInput/lecture' method='post' enctype="multipart/form-data" >
 	<table border id='boardWrite'>
 		<tr>
 			<th>제목</th>
-			<td><input name="btitle" readonly value="<?=$list[0]->btitle?>" type="text" style="width:100%;height:100%;border:0px;"></td>
+			<td><input name="btitle" placeholder='제목을 입력하세요' type="text" style="width:100%;height:100%;border:0px;"></td>
 		</tr>
 		<tr>
 			<th>파일</th>
 			<td><input type="file" name="userfile" size="20" /></td>
 		</tr>
+		
 		<tr>
 			<th>내용</th>
-			<td><textarea name="bcontent" id="ir1" rows="10" cols="100" style="width:100%; height:300px; display:none;"><?=$list[0]->bcontent?></textarea></td>
+			<td><textarea name="bcontent" id="ir1" rows="10" cols="100" style="width:100%; height:300px; display:none;"></textarea></td>
 		</tr>
 		
 
@@ -21,16 +23,14 @@
 	<br>
 	<br>
 	<br>
-	<input class="btn-btn default btn-sm" type="submit" value="수정" onclick="if(!confirm('정말 수정하시겠습니까?')){return false}else{submitContents(this)}"> &nbsp;&nbsp;<input class="btn-btn default btn-sm" type="button" value="돌아가기" onclick="history.back()">
-	<input type="hidden" value="<?=$list[0]->bid?>" name="bid">
+	<input class="btn-btn default btn-sm" type="submit" value="등록" onclick="if($('input[name=btitle]').val().trim()==''){
+					alert('제목을 입력하세요');
+					return false;
+				}else{submitContents(this)}"> &nbsp;&nbsp;<input class="btn-btn default btn-sm" type="button" value="돌아가기" onclick="history.back()">
 	</form>
-
-
-
-</center>
-</div><!-- div id='article'-->
-</div> <!-- div id='wrap'-->
-<script type="text/javascript">
+	<br>
+	
+	<script type="text/javascript">
 var oEditors = [];
 
 // 추가 글꼴 목록
@@ -67,6 +67,14 @@ function submitContents(elClickedObj) {
 }
 
 </script>
+
+
+
+
+
+</center>
+</div><!-- div id='article'-->
+</div> <!-- div id='wrap'-->
 
 </body>
 
