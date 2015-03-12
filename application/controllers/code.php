@@ -349,7 +349,16 @@ class Code extends CI_Controller{
 		}
 	}
 
-
+	/*************************************/
+	/*            관리자 정보 수정           */
+	/************************************/
+	public function managerMyPage(){
+		$udata=$this->session->all_userdata();
+		if(isset($udata['uid'])){
+			$this->load->view('cadiwHeader');
+			$this->load->view('cadiw')
+		}
+	}
 
 	/*************************************/
 	/*            관리자 정보 수정           */
