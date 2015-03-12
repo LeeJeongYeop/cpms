@@ -1,4 +1,4 @@
-<table border="1" width="800px">
+<table id="memberManagementTable" border="1" width="600px">
 	<tr>
 		<th>
 			ID
@@ -23,7 +23,7 @@
 		</th>
 	</tr>
 	<? foreach ($list as $row){ ?>
-	<tr align="center">
+	<tr>
 		<td><? echo $row['id']; ?></td>
 		<td><? echo $row['name']; ?></td>
 		<td><? echo $row['university']; ?></td>

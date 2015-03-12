@@ -3,28 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="/assets/css/cadiw.css" rel="stylesheet" media="screen">
 	<script src='/assets/js/jquery.min.js'></script>
 	<script src='/assets/js/cadiwJS.js'></script>
 	<script src="/assets/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="openWindow">
 	<form method="post" id="memberModifyForm">
 		<h1 align="center">정보 수정</h1>
-		<table class="modify">
+		<table class="modify" height="180px">
 			<tr>
 				<th>아이디</th>
 				<?
 				foreach ($udata as $row){?>
 				<td> <input type="text" id="id" name="id" value="<?=$row->id?>" readonly></td>
 				<? } ?>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" id="pw" name="pw"></td>
-			</tr>
-			<tr>
-				<th>비밀번호 확인</th>
-				<td><input type="password" id="pw_ok" name="pw_ok"></td>
 			</tr>
 			<tr>
 				<th>이름</th>

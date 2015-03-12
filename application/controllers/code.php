@@ -446,7 +446,6 @@ class Code extends CI_Controller{
 	public function memberModifyOk(){
 		$udata=array(
 			'id'=>$this->input->post('id'),
-			'password'=>$this->input->post('pw_ok'),
 			'name'=>$this->input->post('name'),
 			'phone'=>$this->input->post('phone'),
 			'university'=>$this->input->post('uni'),
