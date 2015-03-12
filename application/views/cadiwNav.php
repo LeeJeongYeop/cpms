@@ -29,7 +29,7 @@
 		
 		<div id="menu">
 			
-				<li>공지사항</li>
+				<a href="/index.php/code/notice"><li>공지사항</li></a>
 				<li id="menu_board">게시판</li>
 					
 				<a href="/index.php/code/group?group=<?=$udata['ugroup']?>"><li>웹 프로젝트</li></a>
