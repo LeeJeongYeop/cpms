@@ -25,7 +25,7 @@
 			$('#board_search').keypress(function(){
 
 				if(event.keyCode==13){
-					board_search();
+					board_search('free');
 					
 				
 				}
@@ -57,12 +57,12 @@
 
 		});
 
-function board_search(){
+function board_search(category){
 	if($('#board_search').val().trim()==''){
 		alert('한글자 이상 입력하세요!');
 	}
 	else{
-	location.href="/index.php/code/boardSearch/"+encodeURIComponent($('#board_search_option').val())+"/"+encodeURIComponent($('#board_search').val().trim());
+	location.href="/index.php/code/boardSearch/"+category+"/"+encodeURIComponent($('#board_search_option').val())+"/"+encodeURIComponent($('#board_search').val().trim());
 	}
 }
 function commentRemove(bid,cid){

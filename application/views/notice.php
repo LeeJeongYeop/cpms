@@ -2,7 +2,7 @@
 <center>
 <div id='board'>
 	
-		<h1>게시판</h1>
+		<h1>공지사항</h1>
 		<br>
 		<table>
 			<tr>
@@ -49,8 +49,8 @@
 			<option>제목+내용</option>
 			<option>작성자</option>
 		</select>
-		<input type="search" id="board_search"> &nbsp;<button class="btn-btn default btn-sm" onclick="board_search('free')"><span class='glyphicon glyphicon-search'>검색</span></button>
-		<button id="board_write_btn" class="btn-btn default btn-sm" onclick="location.href='/index.php/code/boardWrite/free'"><span class='glyphicon glyphicon-edit'>글쓰기</span></button>
+		<input type="search" id="board_search"> &nbsp;<button class="btn-btn default btn-sm" onclick="board_search('notice')"><span class='glyphicon glyphicon-search'>검색</span></button>
+		<button id="board_write_btn" class="btn-btn default btn-sm" onclick="location.href='/index.php/code/boardWrite/notice'"><span class='glyphicon glyphicon-edit'>글쓰기</span></button>
 		</center>
 </div><!-- div id='article'-->
 </div> <!--div id='wrap'-->

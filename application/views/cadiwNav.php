@@ -27,13 +27,13 @@
 		
 		<div id="menu">
 			
-				<li>공지사항</li>
+				<a href="/index.php/code/notice"><li>공지사항</li></a>
 				<li id="menu_board">게시판</li>
 					
 				<a href="/index.php/code/group?group=<?=$udata['ugroup']?>"><li>웹 프로젝트</li></a>
 				<li>Q & A</li>
 			<div id="menu_board_sub">
-						<li>강의자료</li>
+						<a href="/index.php/code/lecture"><li>강의자료</li></a>
 						<a href="/index.php/code/board"><li>자유게시판</li></a>
 			</div>
 		</div>

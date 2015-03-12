@@ -72,14 +72,14 @@ class Code extends CI_Controller{
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			
-
+			$category='free';
 			$data['page_num'] = $this->uri->segment(3,0);
 			$data['per_page']=10;
-			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num']);
-			$data['total_rows']=$this->codeModel->boardCount();
+			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num'],$category);
+			$data['total_rows']=$this->codeModel->boardCount($category);
 
 			$comment=$this->codeModel->commentCount();
-			
+			$comment1='';
 			for($i=0;$i<count($data['list']);$i++){
 				$comment1[$i]=0;
 				for($j=0;$j<count($comment);$j++){
@@ -121,19 +121,130 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function boardWrite(){
+	public function lecture(){
+		$udata=$this->session->all_userdata();
+		if(isset($udata['uid'])){
+			
+			$category='lecture';
+			$data['page_num'] = $this->uri->segment(3,0);
+			$data['per_page']=10;
+			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num'],$category);
+			$data['total_rows']=$this->codeModel->boardCount($category);
+
+			$comment=$this->codeModel->commentCount();
+			$comment1='';
+			for($i=0;$i<count($data['list']);$i++){
+				$comment1[$i]=0;
+				for($j=0;$j<count($comment);$j++){
+					if($data['list'][$i]->bid==$comment[$j]->bid)
+						$comment1[$i]=$comment[$j]->bcount;
+				}
+				
+			}
+			$data['comment']=$comment1;
+			
+			$this->load->library('pagination');
+			$config['full_tag_open'] = '<div id="page">';
+			$config['base_url']='/index.php/code/lecture';
+			$config['total_rows']=$data['total_rows'];
+			$config['per_page'] = $data['per_page'];
+			$config['uri_segment'] = 3;
+			$config['next_link']  = '다음';
+			$config['next_tag_open'] = '<div class="page_num">';
+         	$config['next_tag_close'] = '</div>';
+         	$config['prev_link']  = '이전';
+         	$config['prev_tag_open'] = '<div class="page_num">';
+         	$config['prev_tag_close'] = '</div>';
+         	$config['num_tag_open'] = '<div class="page_num">';
+         	$config['num_tag_close'] = '</div>';
+         	$config['cur_tag_open'] = '<div class="page_num">';
+         	$config['cur_tag_close'] = '</div>';
+         	$config['full_tag_close'] = '</div>';
+			$this->pagination->initialize($config);
+			$data['page_links'] = $this->pagination->create_links();
+			if($data['page_links']==null){
+				$data['page_links']='1';
+			}
+			$this->load->view('cadiwHeader');
+			$this->load->view('cadiwNav');
+			$this->load->view('lecture',$data);
+		}
+		else{
+			echo "<script>alert('로그인 해주세요!')</script>";
+			redirect('/code/cadiw','refresh');
+		}
+	}
+	public function notice(){
+		$udata=$this->session->all_userdata();
+		if(isset($udata['uid'])){
+			
+			$category='notice';
+			$data['page_num'] = $this->uri->segment(3,0);
+			$data['per_page']=10;
+			$data['list']=$this->codeModel->board($data['per_page'],$data['page_num'],$category);
+			$data['total_rows']=$this->codeModel->boardCount($category);
+
+			$comment=$this->codeModel->commentCount();
+			$comment1='';
+			for($i=0;$i<count($data['list']);$i++){
+				$comment1[$i]=0;
+				for($j=0;$j<count($comment);$j++){
+					if($data['list'][$i]->bid==$comment[$j]->bid)
+						$comment1[$i]=$comment[$j]->bcount;
+				}
+				
+			}
+			$data['comment']=$comment1;
+			
+			$this->load->library('pagination');
+			$config['full_tag_open'] = '<div id="page">';
+			$config['base_url']='/index.php/code/notice';
+			$config['total_rows']=$data['total_rows'];
+			$config['per_page'] = $data['per_page'];
+			$config['uri_segment'] = 3;
+			$config['next_link']  = '다음';
+			$config['next_tag_open'] = '<div class="page_num">';
+         	$config['next_tag_close'] = '</div>';
+         	$config['prev_link']  = '이전';
+         	$config['prev_tag_open'] = '<div class="page_num">';
+         	$config['prev_tag_close'] = '</div>';
+         	$config['num_tag_open'] = '<div class="page_num">';
+         	$config['num_tag_close'] = '</div>';
+         	$config['cur_tag_open'] = '<div class="page_num">';
+         	$config['cur_tag_close'] = '</div>';
+         	$config['full_tag_close'] = '</div>';
+			$this->pagination->initialize($config);
+			$data['page_links'] = $this->pagination->create_links();
+			if($data['page_links']==null){
+				$data['page_links']='1';
+			}
+			$this->load->view('cadiwHeader');
+			$this->load->view('cadiwNav');
+			$this->load->view('notice',$data);
+		}
+		else{
+			echo "<script>alert('로그인 해주세요!')</script>";
+			redirect('/code/cadiw','refresh');
+		}
+	}
+	public function boardWrite($category){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
-			$this->load->view('boardWrite',array('error' => ' ' ));
+			if($category=='free')
+				$this->load->view('boardWrite',array('error' => ' ' ));
+			else if($category=='lecture')
+				$this->load->view('lectureWrite',array('error' => ' '));
+			else if($category=='notice')
+				$this->load->view('noticeWrite',array('error' => ' '));
 		}
 		else{
 			echo "<script>alert('로그인해주세요!')</script>";
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function boardInput(){
+	public function boardInput($category){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$config['upload_path'] = './uploads/';
@@ -158,11 +269,17 @@ class Code extends CI_Controller{
 				$bcontent=$this->input->post('bcontent');
 				$orig_name=$data['upload_data']['orig_name'];
 				$file_name=$data['upload_data']['file_name'];
-				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$orig_name,$bcontent);
+				
+				$this->codeModel->boardInput($udata['uid'],$btitle,$file_name,$orig_name,$bcontent,$category);
 				
 
 				echo "<script>alert('글이 등록되었습니다')</script>";
-				redirect('/code/board','refresh');
+				if($category=='free')
+					redirect('/code/board','refresh');
+				else if($category=='lecture')
+					redirect('/code/lecture','refresh');
+				else if($category=='notice')
+					redirect('/code/notice','refresh');
 			}
 		
 			
@@ -172,9 +289,7 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function test(){
-		echo "ff";
-	}
+	
 	public function boardView($no){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
@@ -221,11 +336,42 @@ class Code extends CI_Controller{
 	public function boardUpdateSuccess(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
-			$bid=$this->input->post('bid');
-			$bcontent=$this->input->post('bcontent');
-			$this->codeModel->boardUpdate($bid,$bcontent);
-			echo "<script>alert('글이 수정되었습니다')</script>";
-			redirect('/code/board','refresh');
+
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = '*';
+			$config['max_size']	= '100';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+			$config['encrypt_name'] = TRUE;
+			$this->load->library('upload', $config);
+			
+			if ( ! $this->upload->do_upload() && !strstr($this->upload->display_errors(),"You did not select a file to upload."))
+			{
+				$error = array('error' => $this->upload->display_errors());
+				echo "<script>alert('오류')</script>";
+				redirect('/code/boardWrite','refresh');
+			}	
+			else{
+
+				$data = array('upload_data' => $this->upload->data());
+				$btitle=$this->input->post('btitle');
+				$bcontent=$this->input->post('bcontent');
+				$orig_name=$data['upload_data']['orig_name'];
+				$file_name=$data['upload_data']['file_name'];
+
+				$bid=$this->input->post('bid');
+				$bcontent=$this->input->post('bcontent');
+				$this->codeModel->boardUpdate($bid,$bcontent,$orig_name,$file_name);
+				$category=$this->codeModel->boardCategory($bid);
+				$category=$category[0]->category;
+				echo "<script>alert('글이 수정되었습니다')</script>";
+				if($category=='free')
+					redirect('/code/board','refresh');
+				else if($category=='lecture')
+					redirect('/code/lecture','refresh');
+				else if($category=='notice')
+					redirect('/code/notice','refresh');
+			}
 		}
 		else{
 			echo "<script>alert('로그인 해주세요!')</script>";
@@ -245,7 +391,7 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function boardSearch($option,$search){
+	public function boardSearch($category,$option,$search){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$o=$option;
@@ -253,17 +399,18 @@ class Code extends CI_Controller{
 			$option=urldecode($option);
 			$search=urldecode($search);
 
-			$data['page_num'] = $this->uri->segment(5,0);
+			$data['page_num'] = $this->uri->segment(6,0);
 			$data['per_page']=10;
 			if($option=='제목+내용'){
-				$data['list']=$this->codeModel->boardSearchAll($data['per_page'],$data['page_num'],$search);
-				$data['total_rows']=$this->codeModel->boardSearchAllCount($search);
+				$data['list']=$this->codeModel->boardSearchAll($category,$data['per_page'],$data['page_num'],$search);
+				$data['total_rows']=$this->codeModel->boardSearchAllCount($category,$search);
 			}
 			else{
-				$data['list']=$this->codeModel->boardSearchTitle($data['per_page'],$data['page_num'],$search);
-				$data['total_rows']=$this->codeModel->boardSearchTitleCount($search);
+				$data['list']=$this->codeModel->boardSearchTitle($category,$data['per_page'],$data['page_num'],$search);
+				$data['total_rows']=$this->codeModel->boardSearchTitleCount($category,$search);
 			}
-
+			
+			
 			$comment=$this->codeModel->commentCount();
 			$comment1='';
 			for($i=0;$i<count($data['list']);$i++){
@@ -278,10 +425,10 @@ class Code extends CI_Controller{
 			
 			$this->load->library('pagination');
 			$config['full_tag_open'] = '<div id="page">';
-			$config['base_url']='/index.php/code/boardSearch/'.$o.'/'.$s.'';
+			$config['base_url']='/index.php/code/boardSearch/'.$category.'/'.$o.'/'.$s.'';
 			$config['total_rows']=$data['total_rows'];
 			$config['per_page'] = $data['per_page'];
-			$config['uri_segment'] = 5;
+			$config['uri_segment'] = 6;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
          	$config['next_tag_close'] = '</div>';
@@ -300,7 +447,12 @@ class Code extends CI_Controller{
 			}
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
-			$this->load->view('board',$data);
+			if($category=='free')
+				$this->load->view('board',$data);
+			else if($category=='lecture')
+				$this->load->view('lecture',$data);
+			else if($category=='notice')
+				$this->load->view('notice',$data);
 		}
 		else{
 			echo "<script>alert('로그인 해주세요!')</script>";

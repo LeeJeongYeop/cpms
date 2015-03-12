@@ -10,10 +10,11 @@
 						echo "<tr>";
 						echo "<td style='text-align:left;border-right:0px;'>".$list[$i]->name."&nbsp;&nbsp;";
 						echo $list[$i]->cdate."<br>";
-						echo nl2br($list[$i]->ccontent)."</td>";
+						echo nl2br($list[$i]->ccontent);
 						if($list[$i]->uid==$udata['uid']){
-						echo "<td style='border-left:0px;'><span style='cursor:pointer;cursor:hand;'class='glyphicon glyphicon-remove' onclick='commentRemove({$list[$i]->bid},{$list[$i]->cid})'></span></td>";
+						echo "&nbsp;<span style='cursor:pointer;cursor:hand;'class='glyphicon glyphicon-remove' onclick='commentRemove({$list[$i]->bid},{$list[$i]->cid})'></span>";
 						}
+						echo "</td>";
 						echo "</tr>";
 					}
 				?>

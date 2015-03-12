@@ -38,6 +38,9 @@
 	<input type="submit" value="삭제" class="btn btn-default btn-sm" onclick="if(!confirm('정말 삭제하시겠습니까?')){return false;}"><br>
 	<input type="hidden" value="<?=$list[0]->bid?>" id="board_id" name="bid">
 	</form>
+	<?}else{?>
+	<input type="hidden" value="<?=$list[0]->bid?>" id="board_id" name="bid">
+	<?}?>
 	<br>
 	<div id="comment">
 		<div id="commentWrite">
@@ -52,10 +55,11 @@
 						echo "<tr>";
 						echo "<td style='text-align:left;border-right:0px;'>".$comment[$i]->name."&nbsp;&nbsp;";
 						echo $comment[$i]->cdate."<br>";
-						echo nl2br($comment[$i]->ccontent)."</td>";
+						echo nl2br($comment[$i]->ccontent);
 						if($comment[$i]->uid==$udata['uid']){
-						echo "<td style='border-left:0px;'><span style='cursor:pointer;cursor:hand;'class='glyphicon glyphicon-remove' onclick='commentRemove({$list[0]->bid},{$comment[$i]->cid})'></span></td>";
+						echo "&nbsp;<span style='cursor:pointer;cursor:hand;text-align:right'class='glyphicon glyphicon-remove' onclick='commentRemove({$list[0]->bid},{$comment[$i]->cid})'></span>";
 						}
+						echo "</td>";
 						echo "</tr>";
 					}
 				?>
@@ -63,7 +67,7 @@
 		</div>
 	</div>
 </div>
-<?}?>
+
 </div><!-- div id='article'-->
 </div> <!--div id='wrap'-->
 
