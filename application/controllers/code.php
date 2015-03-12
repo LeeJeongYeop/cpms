@@ -98,15 +98,15 @@ class Code extends CI_Controller{
 			$config['uri_segment'] = 3;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
-         	$config['next_tag_close'] = '</div>';
-         	$config['prev_link']  = '이전';
-         	$config['prev_tag_open'] = '<div class="page_num">';
-         	$config['prev_tag_close'] = '</div>';
-         	$config['num_tag_open'] = '<div class="page_num">';
-         	$config['num_tag_close'] = '</div>';
-         	$config['cur_tag_open'] = '<div class="page_num">';
-         	$config['cur_tag_close'] = '</div>';
-         	$config['full_tag_close'] = '</div>';
+			$config['next_tag_close'] = '</div>';
+			$config['prev_link']  = '이전';
+			$config['prev_tag_open'] = '<div class="page_num">';
+			$config['prev_tag_close'] = '</div>';
+			$config['num_tag_open'] = '<div class="page_num">';
+			$config['num_tag_close'] = '</div>';
+			$config['cur_tag_open'] = '<div class="page_num">';
+			$config['cur_tag_close'] = '</div>';
+			$config['full_tag_close'] = '</div>';
 			$this->pagination->initialize($config);
 			$data['page_links'] = $this->pagination->create_links();
 			if($data['page_links']==null){
@@ -151,15 +151,15 @@ class Code extends CI_Controller{
 			$config['uri_segment'] = 3;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
-         	$config['next_tag_close'] = '</div>';
-         	$config['prev_link']  = '이전';
-         	$config['prev_tag_open'] = '<div class="page_num">';
-         	$config['prev_tag_close'] = '</div>';
-         	$config['num_tag_open'] = '<div class="page_num">';
-         	$config['num_tag_close'] = '</div>';
-         	$config['cur_tag_open'] = '<div class="page_num">';
-         	$config['cur_tag_close'] = '</div>';
-         	$config['full_tag_close'] = '</div>';
+			$config['next_tag_close'] = '</div>';
+			$config['prev_link']  = '이전';
+			$config['prev_tag_open'] = '<div class="page_num">';
+			$config['prev_tag_close'] = '</div>';
+			$config['num_tag_open'] = '<div class="page_num">';
+			$config['num_tag_close'] = '</div>';
+			$config['cur_tag_open'] = '<div class="page_num">';
+			$config['cur_tag_close'] = '</div>';
+			$config['full_tag_close'] = '</div>';
 			$this->pagination->initialize($config);
 			$data['page_links'] = $this->pagination->create_links();
 			if($data['page_links']==null){
@@ -204,15 +204,15 @@ class Code extends CI_Controller{
 			$config['uri_segment'] = 3;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
-         	$config['next_tag_close'] = '</div>';
-         	$config['prev_link']  = '이전';
-         	$config['prev_tag_open'] = '<div class="page_num">';
-         	$config['prev_tag_close'] = '</div>';
-         	$config['num_tag_open'] = '<div class="page_num">';
-         	$config['num_tag_close'] = '</div>';
-         	$config['cur_tag_open'] = '<div class="page_num">';
-         	$config['cur_tag_close'] = '</div>';
-         	$config['full_tag_close'] = '</div>';
+			$config['next_tag_close'] = '</div>';
+			$config['prev_link']  = '이전';
+			$config['prev_tag_open'] = '<div class="page_num">';
+			$config['prev_tag_close'] = '</div>';
+			$config['num_tag_open'] = '<div class="page_num">';
+			$config['num_tag_close'] = '</div>';
+			$config['cur_tag_open'] = '<div class="page_num">';
+			$config['cur_tag_close'] = '</div>';
+			$config['full_tag_close'] = '</div>';
 			$this->pagination->initialize($config);
 			$data['page_links'] = $this->pagination->create_links();
 			if($data['page_links']==null){
@@ -281,7 +281,7 @@ class Code extends CI_Controller{
 				else if($category=='notice')
 					redirect('/code/notice','refresh');
 			}
-		
+
 			
 		}
 		else{
@@ -312,7 +312,7 @@ class Code extends CI_Controller{
 			$this->load->helper('download');
 			
 			$data = file_get_contents("./uploads/{$filename}"); // Read the file's contents
- 			force_download($filename, $data); 
+			force_download($filename, $data); 
 
 		}
 		else{
@@ -431,15 +431,15 @@ class Code extends CI_Controller{
 			$config['uri_segment'] = 6;
 			$config['next_link']  = '다음';
 			$config['next_tag_open'] = '<div class="page_num">';
-         	$config['next_tag_close'] = '</div>';
-         	$config['prev_link']  = '이전';
-         	$config['prev_tag_open'] = '<div class="page_num">';
-         	$config['prev_tag_close'] = '</div>';
-         	$config['num_tag_open'] = '<div class="page_num">';
-         	$config['num_tag_close'] = '</div>';
-         	$config['cur_tag_open'] = '<div class="page_num">';
-         	$config['cur_tag_close'] = '</div>';
-         	$config['full_tag_close'] = '</div>';
+			$config['next_tag_close'] = '</div>';
+			$config['prev_link']  = '이전';
+			$config['prev_tag_open'] = '<div class="page_num">';
+			$config['prev_tag_close'] = '</div>';
+			$config['num_tag_open'] = '<div class="page_num">';
+			$config['num_tag_close'] = '</div>';
+			$config['cur_tag_open'] = '<div class="page_num">';
+			$config['cur_tag_close'] = '</div>';
+			$config['full_tag_close'] = '</div>';
 			$this->pagination->initialize($config);
 			$data['page_links'] = $this->pagination->create_links();
 			if($data['page_links']==null){
@@ -485,7 +485,7 @@ class Code extends CI_Controller{
 			echo "<script>alert('로그인 해주세요!')</script>";
 			redirect('/code/cadiw','refresh');
 		}
-	
+
 	}
 	public function commentRemove(){
 		$udata=$this->session->all_userdata();
@@ -508,23 +508,25 @@ class Code extends CI_Controller{
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$this->load->view('cadiwHeader');
-			$this->load->view('cadiw')
+			$this->load->view('cadiwNav');
+			$this->load->view('cadiwManagerMypageNav');
+		}else{
+			echo "<script>alert('로그인 해주세요!')</script>";
+			redirect('/code','refresh');
 		}
 	}
 
-	/*************************************/
-	/*            관리자 정보 수정           */
-	/************************************/
 	public function managerModify(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$result['udata']=$this->codeModel->managerModify($udata['uid']);
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
+			$this->load->view('cadiwManagerMypageNav');
 			$this->load->view('cadiwManagerModify',$result);
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";
-			redirect('/code','refresh');	
+			redirect('/code','refresh');
 		}
 	}
 
@@ -567,6 +569,7 @@ class Code extends CI_Controller{
 		if(isset($udata['uid'])){
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
+			$this->load->view('cadiwManagerMypageNav');
 			$this->load->view('cadiwMemberManagement');
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";
@@ -625,6 +628,7 @@ class Code extends CI_Controller{
 		if(isset($udata['uid'])){
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
+			$this->load->view('cadiwManagerMypageNav');
 			$this->load->view('cadiwManagementAttend');
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";

@@ -51,7 +51,7 @@ table th{
 }
 #menu li{
 	width:200px;
-	height:30px;
+	height:38px;
 	float:left;
 	list-style:none;
 	text-align:center;
@@ -203,4 +203,39 @@ table th{
 
 .openWindow{
 	background-color: white;
+}
+
+#managerMypageNav{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	top: 160px;
+	background: gray;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 200px;
+}
+#managerMypageNav a{
+	color: #303030;
+}
+#managerMypageNav span{
+	width: 266.6px;
+	height: 40px;
+	float: left;
+	text-align: center;
+	margin-top: -10px;
+	padding-top: 10px;
+}
+#managerMypageNav span:hover{
+	background-color: #342E2E;
+	cursor: hand;
+	color: #F65A59;
+}
+#managerMypageNavLeft{
+	border-bottom-left-radius: 20px;
+}
+#managerMypageNavRight{
+	border-bottom-right-radius: 20px;
 }

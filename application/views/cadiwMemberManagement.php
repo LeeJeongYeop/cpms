@@ -23,24 +23,24 @@
 		<div id="memberInsert">
 			<hr>
 			<h3>회원 등록</h3>
-			<table id="memberInsertTable" width="600px" height="100px">
+			<table id="memberInsertTable" width="600px" height="150px">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="id"></td>
+					<td><input type="text" id="id" name="id" class="form-control"></td>
 					<th>비밀번호</th>
-					<td><input type="text" id="pw" name="pw"></td>
+					<td><input type="text" id="pw" name="pw" class="form-control"></td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td><input type="text" id="name" name="name"></td>
+					<td><input type="text" id="name" name="name" class="form-control"></td>
 					<th>핸드폰번호</th>
-					<td><input type="text" id="phone" name="phone"></td>
+					<td><input type="text" id="phone" name="phone" class="form-control"></td>
 				</tr>
 				<tr>
 					<td align="center">대학교</td>
-					<td><input type="text" id="uni" name="uni"></td>
+					<td><input type="text" id="uni" name="uni" class="form-control"></td>
 					<td align="center">권한</td>
-					<td><input type="text" id="auth" name="auth"></td>
+					<td><input type="text" id="auth" name="auth" class="form-control"></td>
 				</tr>
 			</table>
 			<br>
