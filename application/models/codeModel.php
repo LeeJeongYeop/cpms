@@ -81,7 +81,7 @@ class CodeModel extends CI_Model{
 		$where= "category ='".$category."' and btitle like '%".$search."%' or category='".$category."' and bcontent like '%".$search."%' ";
 		$this->db->where($where);
 		$this->db->limit($num,$local);
-		$this->db->select('bid,btitle,name,bdate');
+		$this->db->select('bid,btitle,name,bdate,category');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
 		
@@ -93,7 +93,7 @@ class CodeModel extends CI_Model{
 		$this->db->limit($num,$local);
 		$this->db->where('category',$category);
 		
-		$this->db->select('bid,btitle,name,bdate');
+		$this->db->select('bid,btitle,name,bdate,category');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
 		$this->db->like('name',$search);
