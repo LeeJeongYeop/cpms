@@ -629,14 +629,18 @@ class Code extends CI_Controller{
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
 			$this->load->view('cadiwManagerMypageNav');
-			$this->load->view('cadiwManagementAttend');
+			$data['list']=$this->codeModel->attendlist();
+			$this->load->view('cadiwManagementAttend',$data);
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";
 			redirect('/code','refresh');
 		}
 	}
-	
+
+	public function attendWeekSet(){
+		$max=$this->input->post('weekSet');
+		$this->codeModel->attendWeekAdd($max);
+		redirect('/code/managementAttend');
+	}
 }
-
-
 ?>

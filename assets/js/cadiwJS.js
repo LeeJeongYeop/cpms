@@ -150,4 +150,8 @@ $(function(){
 			window.close();
 		});
 	});
+	/**************** 설정 ****************/
+	$(document).on("keyup", "input:text[numberOnly]",
+		function() {$(this).val( $(this).val().replace(/[^0-9]/gi,""));
+	});
 });
