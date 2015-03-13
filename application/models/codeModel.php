@@ -21,20 +21,36 @@ class CodeModel extends CI_Model{
 		$this->db->insert('board',$insertdb);
 	}
 	function board($num,$local,$category){
-		$this->db->where('category',$category);
-		$this->db->limit($num,$local);
-		$this->db->select('bid,btitle,name,bdate');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		$this->db->order_by("bid", "desc"); 
-		return $this->db->get()->result();
+		$strQuery="(select bid,btitle,name,bdate,category
+					from board join member
+					on board.uid=member.id
+					where category='notice'
+					order by bid desc
+					limit 3)
+					union
+					(select bid,btitle,name,bdate,category
+					from board join member
+					on board.uid=member.id
+					where category='$category')
+					order by category desc,bid desc
+					limit $local,$num";
+		return $this->db->query($strQuery)->result();
+		
+		
+	
+		
 	}
 	function boardCount($category){
-		$this->db->where('category',$category);
-		$this->db->select('bid,btitle,name,bdate');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		return $this->db->count_all_results();
+		$strQuery="(select bid,category
+					from board
+					where category='notice'
+					order by bid desc
+					limit 3)
+					union
+					(select bid,category
+					from board
+					where category='$category')";
+		return $this->db->query($strQuery)->num_rows();
 	}
 	function boardView($no){
 		$this->db->where('bid',$no);

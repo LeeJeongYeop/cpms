@@ -239,3 +239,8 @@ table th{
 #managerMypageNavRight{
 	border-bottom-right-radius: 20px;
 }
+.noticebid{
+	background:red;
+	color:white;
+	border-radius:5px;
+}

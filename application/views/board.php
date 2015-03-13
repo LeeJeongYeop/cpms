@@ -18,7 +18,10 @@
 			else{
 			for($i=0;$i<count($list);$i++){
 				echo "<tr>";
-				echo "	<td>".$list[$i]->bid."</td>";
+				if($list[$i]->category=='notice')
+					echo "	<td><span class='noticebid'>공지</span></td>";
+				else
+					echo "	<td>".$list[$i]->bid."</td>";
 				if($comment[$i]==0){
 					echo "	<td><a href='/index.php/code/boardView/".$list[$i]->bid."'>".$list[$i]->btitle."</a></td>";
 				}
