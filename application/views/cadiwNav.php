@@ -16,10 +16,9 @@
 					<?}?>
 				</tr>
 				<tr>
-					<td><input type='button' class="btn btn-default btn-sm" value='마이페이지'></td>
-					<td><a href="/index.php/code/memberManagement">&nbsp;&nbsp;<input type='button' class="btn btn-default btn-sm" value='회원관리'></a></td>
+					<td><a href="/index.php/code/memberManagement"><input type='button' class="btn btn-default btn-sm" value='마이페이지'></a></td>
 					<td><a href="/index.php/code/logout">&nbsp;&nbsp;<input type='button' class="btn btn-default btn-sm" value='로그아웃'></a></td>
-					<td><a href="/index.php/code/logout">&nbsp;&nbsp;<input type='button' class="btn btn-default btn-sm" value='로그아웃'></a></td>
+				
 				</tr>
 			</table>
 		</div>
