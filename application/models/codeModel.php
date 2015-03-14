@@ -35,10 +35,6 @@ class CodeModel extends CI_Model{
 					order by category desc,bid desc
 					limit $local,$num";
 		return $this->db->query($strQuery)->result();
-		
-		
-	
-		
 	}
 	function boardCount($category){
 		$strQuery="(select bid,category
@@ -52,6 +48,7 @@ class CodeModel extends CI_Model{
 					where category='$category')";
 		return $this->db->query($strQuery)->num_rows();
 	}
+
 	function boardView($no){
 		$this->db->where('bid',$no);
 		$this->db->select('uid,bid,btitle,files,orig_name,name,bcontent,bdate');
@@ -61,8 +58,8 @@ class CodeModel extends CI_Model{
 	}
 	function boardUpdate($bid,$bcontent,$orig_name,$file_name){
 		$data=array('bcontent' =>$bcontent,
-					'orig_name' =>$orig_name,
-					'files' =>$file_name);
+			'orig_name' =>$orig_name,
+			'files' =>$file_name);
 		$this->db->where('bid',$bid);
 		$this->db->update('board',$data);
 	}
@@ -77,22 +74,22 @@ class CodeModel extends CI_Model{
 		$this->db->delete('board');
 	}
 	function boardSearchAll($category,$num,$local,$search){
-		
+
 		$where= "category ='".$category."' and btitle like '%".$search."%' or category='".$category."' and bcontent like '%".$search."%' ";
 		$this->db->where($where);
 		$this->db->limit($num,$local);
 		$this->db->select('bid,btitle,name,bdate,category');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
-		
-		
+
+
 		$this->db->order_by("bid", "desc"); 
 		return $this->db->get()->result();
 	}
 	function boardSearchTitle($category,$num,$local,$search){
 		$this->db->limit($num,$local);
 		$this->db->where('category',$category);
-		
+
 		$this->db->select('bid,btitle,name,bdate,category');
 		$this->db->from('board');
 		$this->db->join('member','member.id=board.uid');
@@ -103,9 +100,9 @@ class CodeModel extends CI_Model{
 	function boardSearchAllCount($category,$search){
 		$where= "category ='".$category."' and btitle like '%".$search."%' or category ='".$category."' and bcontent like '%".$search."%' ";
 		$this->db->where($where);
-		
+
 		$this->db->from('board');
-		
+
 
 		return $this->db->count_all_results();
 	}
@@ -150,7 +147,7 @@ class CodeModel extends CI_Model{
 		return $this->db->get()->result();
 	}
 
-		/*  관리자 정보 수정  */
+/*  관리자 정보 수정  */
 	function managerModify($id){  // 회원 본인 정보수정과 같이 사용
 		$this->db->where('id', $id);
 		$data = $this->db->get('member')->result();
@@ -165,6 +162,8 @@ class CodeModel extends CI_Model{
 	/*  회원 등록  */
 	function memberInsert($udata){
 		$this->db->insert('member',$udata);
+		$this->db->set('id', $udata['id']); // attendTable에 insert
+		$this->db->insert('attend'); // attendTable에 insert
 	}
 
 	/*  회원 조회  */
@@ -193,6 +192,25 @@ class CodeModel extends CI_Model{
 		$this->db->where('id',$udata['id']);
 		$this->db->update('member',$udata);
 	}
+
+	/*  관리자 출석 관리  */
+	function attendlist(){
+		$this->db->select('*');
+		$this->db->from('attend');
+		$this->db->join('member','member.id=attend.id');
+		$this->db->order_by('attend.id');
+
+		$data=$this->db->get()->result_array();
+
+		return $data;
+	}
 	
+	function attendWeekAdd($max){
+		for($i=1; $i<=$max; $i++){
+			$strQuery="ALTER TABLE attend
+			ADD ($i"."주차 integer(2));";
+			$this->db->query($strQuery);
+		}
+	}
 }
 ?>
