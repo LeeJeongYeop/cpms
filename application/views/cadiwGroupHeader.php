@@ -18,7 +18,7 @@
 	<script src='/assets/js/lang-all.js'></script>
 	<script>
 		var uauth='<?=$udata['uauth']?>';
-		var ugroup="<?=$udata['ugroup']?>";
+		var ugroup="<?=$group?>";
 	</script>
 	<script src='/assets/js/groupCalendar.js'></script>
 	<script src="/assets/js/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@
 	<div id="wrap">
 	<a href="/index.php/code/cadiw">
 		<div id="header">
-			<img src="/assets/image/cadi-w.jpg" height="100px">웹 개발 단기 프로젝트 동아리 조별 게시판<br>
+			<img src="/assets/image/cadi-w.jpg" height="100px">웹 개발 단기 프로젝트 동아리 <?=$group?>조 페이지<br>
 
 		</div>
 	</a> 

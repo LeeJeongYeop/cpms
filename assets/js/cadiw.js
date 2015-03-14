@@ -7,18 +7,36 @@
 		var middle=(screen.width-$('#calendar').outerWidth())/2;
 		$('#calendar').css("left",middle+"px");
 
-
-		$('#menu_board_sub').css("left",($('#menu_board').offset().left-$('#menu_board_sub').offset().left)+'px');
 		$('#article').css('left',($('#wrap').outerWidth()-$('#article').outerWidth())/2+'px')
-		$('#menu_board_sub').hide();
-		$('#menu_board,#menu_board_sub').hover(function(){
-			$('#menu_board').css('background','#342E2E');
-			$('#menu_board_sub').stop().slideDown('fast');
-		},function(){
-			$('#menu_board').css('background','none');
-			$('#menu_board_sub').stop().slideUp('fast');
-		})
+		if((document.getElementById('menu_board'))!=null && (document.getElementById('menu_board_sub'))!=null){
+			$('#menu_board_sub').css("left",($('#menu_board').offset().left-$('#menu_board_sub').offset().left)+'px');
+		
+			$('#menu_board_sub').hide();
+			$('#menu_board,#menu_board_sub').hover(function(){
+				$('#menu_board').css('background','#342E2E');
+				$('#menu_board_sub').stop().slideDown('fast');
+			},function(){
+				$('#menu_board').css('background','none');
+				$('#menu_board_sub').stop().slideUp('fast');
+			})
+		}
+		if((document.getElementById('groupPage'))!=null && (document.getElementById('groupPage_sub'))!=null){
+			$('#groupPage_sub').css("left",($('#groupPage').offset().left-$('#groupPage_sub').offset().left)+'px');
+			$('#groupPage_sub').hide();
+				$('#groupPage,#groupPage_sub').hover(function(){
+					$('#groupPage').css('background','#342E2E');
+					$('#groupPage_sub').stop().slideDown('fast');
+				},function(){
+					$('#groupPage').css('background','none');
+					$('#groupPage_sub').stop().slideUp('fast');
+				})
 
+			$('#groupPage_sub').load('/index.php/code/groupPage',function(data){
+				$(this).css('height',(data.split('<li>').length-1)*50+'px');
+		});	
+
+		}
+		
 		$('#board_search').keypress(function(){
 			if(event.keyCode==13){
 				board_search('free');
@@ -54,15 +72,3 @@
 	}
 
 
-//text editor
-if($('.jqte-test')){
-	$('.jqte-test').jqte();
-	
-	// settings of status
-	var jqteStatus = true;
-	$(".status").click(function()
-	{
-		jqteStatus = jqteStatus ? false : true;
-		$('.jqte-test').jqte({"status" : jqteStatus})
-	});
-}

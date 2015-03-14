@@ -29,20 +29,10 @@ $udata=$this->session->all_userdata();
 
 <div id="menu">
 
-	<a href="/index.php/code/notice"><li>공지사항</li></a>
-	<li id="menu_board">게시판</li>
-	<?if($udata['uauth']=='관리자'){?>
-		<li id="groupPage">웹 프로젝트</li>
-	<?}else{?>
-		<a href="/index.php/code/group/<?=$udata['ugroup']?>"><li id="groupPage">웹 프로젝트</li></a>
-	<?}?>
-	<div id="menu_board_sub">
-		<a href="/index.php/code/lecture"><li>강의자료</li></a>
-		<a href="/index.php/code/board"><li>자유게시판</li></a>
-	</div>
-	<?if($udata['uauth']=='관리자'){?>
-	<div id="groupPage_sub">
-		
-	</div>
-	<?}?>
+	<a href="/index.php/code/notice"><li>메인으로</li></a>
+	<li >게시판</li>
+
+	<a href="/index.php/code/group/<?=$udata['ugroup']?>"><li>웹 프로젝트</li></a>
+	
+	
 </div>

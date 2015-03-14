@@ -67,7 +67,7 @@ table th{
 #menu a:hover{
 	text-decoration:none;
 }
-#menu_board_sub{
+#menu_board_sub,#groupPage_sub{
 
 	background:#342E2E;
 	position:absolute;
@@ -76,11 +76,11 @@ table th{
 	height:100px;
 	z-index:5;
 }
-#menu_board_sub li{
+#menu_board_sub li,#groupPage_sub li{
 	height:50px;
 	padding-top:10px;
 }
-#menu_board_sub li:hover{
+#menu_board_sub li:hover,#groupPage_sub li:hover{
 	cursor:hand;
 	cursor:pointer;
 	background:#272222;
@@ -116,6 +116,7 @@ table th{
 	height:30px;
 	border-top:2px solid black;
 	border-bottom:2px solid black;
+	background:#F7F7F7;
 }
 #board table td{
 	border-bottom:1px solid black;

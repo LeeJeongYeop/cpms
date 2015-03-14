@@ -142,6 +142,13 @@ class CodeModel extends CI_Model{
 		$this->db->order_by('bid','desc');
 		return $this->db->get()->result();
 	}
+	function groupPage(){
+		$this->db->where('authority !=','관리자');
+		$this->db->select('distinct grp',false);
+		$this->db->from('member');
+		$this->db->order_by('grp');
+		return $this->db->get()->result();
+	}
 
 		/*  관리자 정보 수정  */
 	function managerModify($id){  // 회원 본인 정보수정과 같이 사용

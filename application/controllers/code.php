@@ -55,17 +55,25 @@ class Code extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect('/code','location');
 	}
-	public function group(){
+	public function group($group){
 		$udata=$this->session->all_userdata();
-		$group=$this->input->get('group');
-		if($udata['ugroup']!=$group){
+		
+		if($udata['ugroup']!=$group && $udata['uauth']!='관리자'){
 			echo "<script>alert('권한이 없습니다')</script>";
 			redirect('/code/cadiw','refresh');
 		}
 		else{
-			$this->load->view('cadiwGroupHeader');
-			$this->load->view('cadiwNav');
+			$data['group']=$group;
+			$this->load->view('cadiwGroupHeader',$data);
+			$this->load->view('cadiwGroupNav');
 			$this->load->view('cadiwGroupIndex');
+		}
+	}
+	public function groupPage(){
+		$num=$this->codeModel->groupPage();
+		
+		for($i=0;$i<count($num);$i++){
+			echo "<a href='/index.php/code/group/".$num[$i]->grp."'><li>".$num[$i]->grp." 조 </li></a>";
 		}
 	}
 	public function board(){

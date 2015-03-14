@@ -9,7 +9,7 @@ $(document).ready(function() {
 			right: 'month,agendaWeek,agendaDay'
 		},
 		lang:'ko',
-		height:380,
+		height:500,
 		
 		selectable:true,
 		selectHelper:true,
