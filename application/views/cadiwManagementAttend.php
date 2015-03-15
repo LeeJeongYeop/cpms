@@ -7,7 +7,7 @@
 					주차설정:&nbsp&nbsp
 					<input type="text" id="weekSet" name="weekSet" size="5"
 					onkeypress="onlyNumber();" style="text-align:right;" numberonly="true"/>
-					<input type="submit" value="설정">
+					<input type="submit" class='btn btn-default btn-sm' value="설정" onclick="if(!confirm('정말 변경하시겠습니까?')){return false;}">
 				</div>
 			</form>
 			<hr>

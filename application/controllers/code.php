@@ -648,7 +648,7 @@ class Code extends CI_Controller{
 
 	public function attendWeekSet(){
 		$max=$this->input->post('weekSet');
-		$this->codeModel->attendWeekAdd($max);
+		$this->codeModel->attendWeekModify($max);
 		redirect('/code/managementAttend');
 	}
 }

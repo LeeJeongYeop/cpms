@@ -205,12 +205,20 @@ class CodeModel extends CI_Model{
 		return $data;
 	}
 	
-	function attendWeekAdd($max){
-		for($i=1; $i<=$max; $i++){
-			$strQuery="ALTER TABLE attend
-			ADD ($i"."week integer(2));";
-			$this->db->query($strQuery);
+	function attendWeekModify($max){
+		
+		$currentWeek=$this->db->query('select * from attend')->num_fields();
+		if($currentWeek-1>$max){
+			for($i=$currentWeek-1;$i>$max;$i--){
+				$this->db->query('alter table attend drop '.$i.'week');
+			}
 		}
+		else if($currentWeek-1<$max){
+			for($i=$currentWeek;$i<=$max;$i++){
+				$this->db->query('alter table attend add ('.$i.'week integer(2))');
+			}
+		}
+
 	}
 
 	function attendweekload(){
