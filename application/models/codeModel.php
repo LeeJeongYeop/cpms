@@ -208,9 +208,15 @@ class CodeModel extends CI_Model{
 	function attendWeekAdd($max){
 		for($i=1; $i<=$max; $i++){
 			$strQuery="ALTER TABLE attend
-			ADD ($i"."주차 integer(2));";
+			ADD ($i"."week integer(2));";
 			$this->db->query($strQuery);
 		}
+		$this->db->set('week',$max);
+		$this->db->insert('attend_week_set');
+	}
+
+	function attendweekload(){
+		return $this->db->get('attend_week_set')->result_array();
 	}
 }
 ?>

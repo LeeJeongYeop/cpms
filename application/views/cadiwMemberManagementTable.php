@@ -31,7 +31,7 @@
 		<td><? echo $row['grp']; ?></td>
 		<td><? echo $row['authority']; ?></td>
 		<td>
-			<button class="btn btn-default btn-sm modifyBtn" id="" value="<?=$row['id']?>">수정</button>&nbsp
+			<button class="btn btn-default btn-sm modifyBtn" value="<?=$row['id']?>">수정</button>&nbsp
 			<button class="btn btn-default btn-sm deleteBtn" value="<?=$row['id']?>">삭제</button>
 		</td>
 	</tr>
