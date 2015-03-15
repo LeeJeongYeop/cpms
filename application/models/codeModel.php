@@ -211,12 +211,11 @@ class CodeModel extends CI_Model{
 			ADD ($i"."week integer(2));";
 			$this->db->query($strQuery);
 		}
-		$this->db->set('week',$max);
-		$this->db->insert('attend_week_set');
 	}
 
 	function attendweekload(){
-		return $this->db->get('attend_week_set')->result_array();
+		$strQuery=" select count(*) from information_schema.columns where table_name='attend' ";
+		return $this->db->query($strQuery)->result_array();
 	}
 }
 ?>

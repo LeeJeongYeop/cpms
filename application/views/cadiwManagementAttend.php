@@ -17,8 +17,8 @@
 						<th>아이디</th>
 						<th>이름</th>
 						<th>조</th>
-						<? foreach ($week as $row){ ?>
-						<? for($i=1; $i<=$row['week']; $i++){ ?>
+						<?foreach($week as $row){?>
+						<? for($i=1; $i<=$row['count(*)']-1; $i++){ ?>
 						<th><?=$i?>주차</th>
 						<? } } ?>
 					</tr>
@@ -27,13 +27,13 @@
 						<td><? echo $row['id']; ?></td>
 						<td><? echo $row['name']; ?></td>
 						<td><? echo $row['grp'] ?></td>
-						<? foreach ($week as $week_row){ ?>
-						<? for($i=1; $i<=$week_row['week']; $i++){ ?>
+						<?foreach($week as $week_row){?>
+						<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
 						<td>
-						<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>in" value="0" checked>
-						<label for="<?=$row['id']?>in">출석</label>
-						<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>out" value="1">
-						<label for="<?=$row['id']?>out">결석</label>
+							<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>in" value="0" checked>
+							<label for="<?=$row['id']?>in">출석</label>
+							<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>out" value="1">
+							<label for="<?=$row['id']?>out">결석</label>
 						</td>
 						<? } } ?>
 					</tr>
