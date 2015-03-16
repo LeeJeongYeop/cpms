@@ -16,6 +16,8 @@
 	<script src='/assets/js/jquery.min.js'></script>
 	<script src='/assets/js/fullcalendar.min.js'></script>
 	<script src='/assets/js/lang-all.js'></script>
+
+	<script type="text/javascript" src="/assets/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script>
 		var uauth='<?=$udata['uauth']?>';
 		var ugroup="<?=$group?>";
@@ -27,7 +29,7 @@
 	</head>
 <body>
 	<div id="wrap">
-	<a href="/index.php/code/cadiw">
+	<a href="/index.php/code/group/<?=$group?>">
 		<div id="header">
 			<img src="/assets/image/cadi-w.jpg" height="100px">웹 개발 단기 프로젝트 동아리 <?=$group?>조 페이지<br>
 

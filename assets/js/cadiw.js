@@ -33,15 +33,12 @@
 
 			$('#groupPage_sub').load('/index.php/code/groupPage',function(data){
 				$(this).css('height',(data.split('<li>').length-1)*50+'px');
-		});	
+				
+			});	
 
 		}
 		
-		$('#board_search').keypress(function(){
-			if(event.keyCode==13){
-				board_search('free');
-			}
-		})
+		
 
 		$('#comment_submit').click(function(){
 			$.post('/index.php/code/commentWrite',{board_id:$('#board_id').val(),content:$('#commentWrite_content').val()},function(data){
@@ -61,6 +58,7 @@
 			alert('한글자 이상 입력하세요!');
 		}
 		else{
+
 			location.href="/index.php/code/boardSearch/"+category+"/"+encodeURIComponent($('#board_search_option').val())+"/"+encodeURIComponent($('#board_search').val().trim());
 		}
 	}
