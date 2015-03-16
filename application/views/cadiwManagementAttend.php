@@ -1,13 +1,13 @@
 <div id="article">
 	<center>
 		<div class="contents">
-			<h3>출석 관리</h3>
+			<h1>출석 관리</h1>
 			<form action="/index.php/code/attendWeekSet" method="post">
-				<div align="right">
-					주차설정:&nbsp&nbsp
+				<div align="right" style="font-size:23px">
+					주차설정:
+					<input type="submit" style="float: right;" class='btn btn-default btn-sm' value="설정" onclick="if(!confirm('정말 변경하시겠습니까?')){return false;}">
 					<input type="text" id="weekSet" name="weekSet" size="5"
-					onkeypress="onlyNumber();" style="text-align:right;" numberonly="true"/>
-					<input type="submit" class='btn btn-default btn-sm' value="설정" onclick="if(!confirm('정말 변경하시겠습니까?')){return false;}">
+					onkeypress="onlyNumber();" numberonly="true" class="form-control" />
 				</div>
 			</form>
 			<hr>
@@ -30,10 +30,7 @@
 						<?foreach($week as $week_row){?>
 						<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
 						<td>
-							<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>in" value="0" checked>
-							<label for="<?=$row['id']?>in">출석</label>
-							<input type="radio" name="<?=$row['id']?>_<?=$i?>attend" id="<?=$row['id']?>_<?=$i?>out" value="1">
-							<label for="<?=$row['id']?>out">결석</label>
+						<input type="text" size="5" class="form-control">
 						</td>
 						<? } } ?>
 					</tr>

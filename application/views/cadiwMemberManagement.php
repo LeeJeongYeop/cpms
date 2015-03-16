@@ -2,7 +2,7 @@
 <center>
 <div class="contents">
 	<div id="grpSelect">
-		<h3>회원 조회</h3>
+		<h1>회원 조회</h1>
 		<form id="insertForm" method="post">
 			<span>조선택(등록) :</span>	
 			<select name="grp" id="grp">

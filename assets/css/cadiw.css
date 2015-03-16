@@ -14,7 +14,6 @@ table th{
 	position:relative;
 	background:white;
 	margin:auto;
-	margin-top:50px;
 	border-radius:20px;
 	height:800px;
 }
@@ -244,4 +243,17 @@ table th{
 	background:red;
 	color:white;
 	border-radius:5px;
+}
+#weekSet{
+	margin-right: 10px;
+	margin-left: 10px;
+	float: right;
+	text-align: right;
+	width: 60px;
+}
+#attendTableManager{
+	table-layout: fixed;
+}
+#managementAttendTable{
+	width: 700px;
 }
