@@ -1,3 +1,16 @@
+<script>
+	$(document).ready(function(){
+		$('#board_search').keypress(function(){
+
+
+
+			if(event.keyCode==13){
+				
+				board_search('lecture');
+			}
+		})
+	})
+</script>
 <div id="article">
 <center>
 <div id='board'>

@@ -66,13 +66,20 @@ table th{
 #menu a:hover{
 	text-decoration:none;
 }
-#menu_board_sub,#groupPage_sub{
+#menu_board_sub{
 
 	background:#342E2E;
 	position:absolute;
 	top:30px;
 	width:200px;
 	height:100px;
+	z-index:5;
+}
+#groupPage_sub{
+	background:#342E2E;
+	position:absolute;
+	top:30px;
+	width:200px;
 	z-index:5;
 }
 #menu_board_sub li,#groupPage_sub li{
@@ -131,6 +138,7 @@ table th{
 #boardWrite{
 	width:700px;
 	height:400px;
+	margin-top:10px;
 
 }
 #boardWrite th{

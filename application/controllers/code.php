@@ -65,7 +65,7 @@ class Code extends CI_Controller{
 		else{
 			$data['group']=$group;
 			$this->load->view('cadiwGroupHeader',$data);
-			$this->load->view('cadiwGroupNav');
+			$this->load->view('cadiwGroupNav',$data);
 			$this->load->view('cadiwGroupIndex');
 		}
 	}
@@ -76,6 +76,62 @@ class Code extends CI_Controller{
 			echo "<a href='/index.php/code/group/".$num[$i]->grp."'><li>".$num[$i]->grp." 조 </li></a>";
 		}
 	}
+	public function groupBoard($group){
+		$udata=$this->session->all_userdata();
+		
+		if($udata['ugroup']!=$group && $udata['uauth']!='관리자'){
+			echo "<script>alert('권한이 없습니다')</script>";
+			redirect('/code/cadiw','refresh');
+		}
+		else{
+			$category=$group;
+			$grp['group']=$group;
+			$data['page_num'] = $this->uri->segment(4,0);
+			$data['per_page']=10;
+			$data['list']=$this->codeModel->groupBoard($data['per_page'],$data['page_num'],$category);
+			$data['total_rows']=$this->codeModel->groupBoardCount($category);
+
+			$comment=$this->codeModel->commentCount();
+			$comment1='';
+			for($i=0;$i<count($data['list']);$i++){
+				$comment1[$i]=0;
+				for($j=0;$j<count($comment);$j++){
+					if($data['list'][$i]->bid==$comment[$j]->bid)
+						$comment1[$i]=$comment[$j]->bcount;
+				}
+				
+			}
+			$data['comment']=$comment1;
+
+			$this->load->library('pagination');
+			$config['full_tag_open'] = '<div id="page">';
+			$config['base_url']='/index.php/code/groupBoard/$group';
+			$config['total_rows']=$data['total_rows'];
+			$config['per_page'] = $data['per_page'];
+			$config['uri_segment'] = 4;
+			$config['next_link']  = '다음';
+			$config['next_tag_open'] = '<div class="page_num">';
+			$config['next_tag_close'] = '</div>';
+			$config['prev_link']  = '이전';
+			$config['prev_tag_open'] = '<div class="page_num">';
+			$config['prev_tag_close'] = '</div>';
+			$config['num_tag_open'] = '<div class="page_num">';
+			$config['num_tag_close'] = '</div>';
+			$config['cur_tag_open'] = '<div class="page_num">';
+			$config['cur_tag_close'] = '</div>';
+			$config['full_tag_close'] = '</div>';
+			$this->pagination->initialize($config);
+			$data['page_links'] = $this->pagination->create_links();
+			if($data['page_links']==null){
+				$data['page_links']='1';
+			}
+
+			$this->load->view('cadiwGroupHeader',$grp);
+			$this->load->view('cadiwGroupNav');
+			$this->load->view('groupBoard',$data);
+		}
+	}
+
 	public function board(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
@@ -238,14 +294,35 @@ class Code extends CI_Controller{
 	public function boardWrite($category){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
-			$this->load->view('cadiwHeader');
-			$this->load->view('cadiwNav');
-			if($category=='free')
+			
+			if($category=='free'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('boardWrite',array('error' => ' ' ));
-			else if($category=='lecture')
+			}
+			else if($category=='lecture'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('lectureWrite',array('error' => ' '));
-			else if($category=='notice')
+			}
+			else if($category=='notice'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('noticeWrite',array('error' => ' '));
+			}
+			else{
+				if($udata['ugroup']!=$category && $udata['uauth']!='관리자'){
+					echo "<script>alert('권한이 없습니다')</script>";
+					redirect('/code/cadiw','refresh');
+				}
+				else{
+					$data['group']=$category;
+					$data['error']='';
+					$this->load->view('cadiwGroupHeader',$data);
+					$this->load->view('cadiwGroupNav',$data);
+					$this->load->view('groupBoardWrite',$data);
+				}
+			}
 		}
 		else{
 			echo "<script>alert('로그인해주세요!')</script>";
@@ -288,6 +365,8 @@ class Code extends CI_Controller{
 					redirect('/code/lecture','refresh');
 				else if($category=='notice')
 					redirect('/code/notice','refresh');
+				else
+					redirect('/code/groupBoard/'.$category,'refresh');
 			}
 
 			
@@ -430,7 +509,7 @@ class Code extends CI_Controller{
 				
 			}
 			$data['comment']=$comment1;
-			
+
 			$this->load->library('pagination');
 			$config['full_tag_open'] = '<div id="page">';
 			$config['base_url']='/index.php/code/boardSearch/'.$category.'/'.$o.'/'.$s.'';
@@ -453,14 +532,34 @@ class Code extends CI_Controller{
 			if($data['page_links']==null){
 				$data['page_links']='1';
 			}
-			$this->load->view('cadiwHeader');
-			$this->load->view('cadiwNav');
-			if($category=='free')
+			
+			if($category=='free'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('board',$data);
-			else if($category=='lecture')
+			}
+			else if($category=='lecture'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('lecture',$data);
-			else if($category=='notice')
+			}
+			else if($category=='notice'){
+				$this->load->view('cadiwHeader');
+				$this->load->view('cadiwNav');
 				$this->load->view('notice',$data);
+			}
+			else{
+				if($udata['ugroup']!=$category && $udata['uauth']!='관리자'){
+					echo "<script>alert('권한이 없습니다')</script>";
+					redirect('/code/cadiw','refresh');
+				}
+				else{
+					$data['group']=$category;
+					$this->load->view('cadiwGroupHeader',$data);
+					$this->load->view('cadiwGroupNav',$data);
+					$this->load->view('groupBoard',$data);
+				}
+			}
 		}
 		else{
 			echo "<script>alert('로그인 해주세요!')</script>";
