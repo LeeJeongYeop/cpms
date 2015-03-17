@@ -138,9 +138,10 @@ table th{
 #boardWrite{
 	width:700px;
 	height:400px;
-	margin-top:10px;
+	margin-top:15px;
 
 }
+
 #boardWrite th{
 	text-align:center;
 }
@@ -264,4 +265,7 @@ table th{
 }
 #managementAttendTable{
 	width: 700px;
+}
+#commentView table{
+	border-bottom:1px solid #717171;
 }

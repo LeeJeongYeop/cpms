@@ -3,10 +3,10 @@
 <center>
 	<?php echo $error;?>
 	<form id='boardWriteForm' action='/index.php/code/boardInput/lecture' method='post' enctype="multipart/form-data" >
-	<table border id='boardWrite'>
+	<table id='boardWrite'>
 		<tr>
 			<th>제목</th>
-			<td><input name="btitle" placeholder='제목을 입력하세요' type="text" style="width:100%;height:100%;border:0px;"></td>
+			<td><input name="btitle" placeholder='제목을 입력하세요' type="text" style="width:100%;height:100%;"></td>
 		</tr>
 		<tr>
 			<th>파일</th>

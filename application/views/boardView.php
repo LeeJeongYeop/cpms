@@ -48,7 +48,7 @@
 		</div>
 		<div id="commentView">
 		<br>
-			<table border style="width:100%;">
+			<table style="width:100%;">
 				<?
 
 					for($i=0;$i<count($comment);$i++){
