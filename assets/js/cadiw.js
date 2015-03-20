@@ -2,7 +2,7 @@
 		$('#wrap').css('width',(screen.width)/2+'px');
 		var wrapHeight=$('#wrap').outerHeight();
 		$('#wrap').css('height',wrapHeight+$('#comment').outerHeight()+'px');
-		$('#managerMypageNav span').css('width',($('#managerMypageNav').outerWidth())/3+'px')
+		$('#managerMypageNav span').css('width',(($('#managerMypageNav').outerWidth())/3)+'px')
 		$('#header').css('width',(screen.width)/2+'px');
 		var middle=(screen.width-$('#calendar').outerWidth())/2;
 		$('#calendar').css("left",middle+"px");
