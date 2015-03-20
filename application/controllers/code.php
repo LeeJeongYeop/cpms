@@ -66,7 +66,7 @@ class Code extends CI_Controller{
 			$data['group']=$group;
 			$this->load->view('cadiwGroupHeader',$data);
 			$this->load->view('cadiwGroupNav',$data);
-			$this->load->view('cadiwGroupIndex');
+			$this->load->view('cadiwGroupIndex',$data);
 		}
 	}
 	public function groupPage(){

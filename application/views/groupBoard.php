@@ -17,7 +17,7 @@
 	
 		<h1>자료실</h1>
 		<br>
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>

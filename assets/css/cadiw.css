@@ -15,7 +15,8 @@ table th{
 	background:white;
 	margin:auto;
 	border-radius:20px;
-	height:800px;
+	height:1000px;
+	
 }
 #header{
 	position:absolute;
@@ -26,6 +27,7 @@ table th{
 	border-top-left-radius:20px;
 	border-top-right-radius:20px;
 	z-index:1;
+
 
 }
 #mypage{
@@ -95,6 +97,7 @@ table th{
 	position:absolute;
 	width:700px;
 	top:200px;
+	
 }
 
 #calendar {
@@ -102,7 +105,7 @@ table th{
 }
 #board{
 	
-	height:300px;
+	
 	color:black;
 }
 #board table{
@@ -122,7 +125,7 @@ table th{
 	height:30px;
 	border-top:2px solid black;
 	border-bottom:2px solid black;
-	background:#F7F7F7;
+	background:#F2F2F2;
 }
 #board table td{
 	border-bottom:1px solid black;
@@ -155,11 +158,27 @@ table th{
 	
 }
 #boardView{
+
 	width:700px;
-	height:450px;
+	height:600px;
+}
+
+#boardView th{
+	border-right:2px solid #E3E3E3;
+
+}
+
+#boardView tr{
+
+	border-bottom:2px solid #E3E3E3;
+}
+#boardView td{
+	text-align:left;
+	padding:10px;
 }
 #boardView tr:nth-child(1){
-	height:30px;
+	border-top:2px solid gray;
+	height:40px;
 }
 #boardView tr:nth-child(2){
 	height:30px;
@@ -169,9 +188,16 @@ table th{
 }
 #boardView tr:nth-child(4){
 	height:30px;
+	border-bottom:2px solid gray;
+}
+#boardView tr:nth-child(5){
+	height:470px;
+	border-bottom:2px solid gray;
 }
 
+
 #page{
+	
 	width:400px;
 	height:30px;
 	
@@ -266,6 +292,6 @@ table th{
 #managementAttendTable{
 	width: 700px;
 }
-#commentView table{
+#commentView table tr{
 	border-bottom:1px solid #717171;
 }
