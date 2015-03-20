@@ -750,5 +750,9 @@ class Code extends CI_Controller{
 		$this->codeModel->attendWeekModify($max);
 		redirect('/code/managementAttend');
 	}
+
+	public function attendInput(){
+		
+	}
 }
 ?>

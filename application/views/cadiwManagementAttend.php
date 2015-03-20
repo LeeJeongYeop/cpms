@@ -11,32 +11,35 @@
 				</div>
 			</form>
 			<hr>
-			<div id="managementAttendTable">
-				<table id="attendTableManager" border="1" width="700px" height="200px">
-					<tr>
-						<th>아이디</th>
-						<th>이름</th>
-						<th>조</th>
-						<?foreach($week as $row){?>
-						<? for($i=1; $i<=$row['count(*)']-1; $i++){ ?>
-						<th><?=$i?>주차</th>
-						<? } } ?>
-					</tr>
-					<? foreach ($list as $row){ ?>
-					<tr>
-						<td><? echo $row['id']; ?></td>
-						<td><? echo $row['name']; ?></td>
-						<td><? echo $row['grp'] ?></td>
-						<?foreach($week as $week_row){?>
-						<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
-						<td>
-						<input type="text" size="5" class="form-control">
-						</td>
-						<? } } ?>
-					</tr>
-					<? } ?>
-				</table>
-			</div>
+			<form action="/index.php/code/attendInput">
+				<div id="managementAttendTable">
+					<table id="attendTableManager" border="1" width="700px" height="200px">
+						<tr>
+							<th width="80px">아이디</th>
+							<th width="80px">이름</th>
+							<th width="20px">조</th>
+							<?foreach($week as $row){?>
+							<? for($i=1; $i<=$row['count(*)']-1; $i++){ ?>
+							<th width="60px"><?=$i?>주차</th>
+							<? } } ?>
+						</tr>
+						<? foreach ($list as $row){ ?>
+						<tr>
+							<td><? echo $row['id']; ?></td>
+							<td><? echo $row['name']; ?></td>
+							<td><? echo $row['grp'] ?></td>
+							<?foreach($week as $week_row){?>
+							<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
+							<td>
+								<input type="text" id="<?=$row['id']?>_<?=$i?>" name="<?=$row['id']?>_<?=$i?>" class="form-control" value="<?=$row['id']?>_<?=$i?>">
+							</td>
+							<? } } ?>
+						</tr>
+						<? } ?>
+					</table>
+				</div>
+				<input type="submit" value="입력" style="font-size:20px" class='btn btn-default btn-sm'>
+			</form>
 		</div>
 	</center>
 </div>

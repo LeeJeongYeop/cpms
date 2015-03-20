@@ -264,4 +264,7 @@ table th{
 }
 #managementAttendTable{
 	width: 700px;
+	height: 400px;
+	overflow-x:scroll;
+	overflow-y:scroll;
 }
