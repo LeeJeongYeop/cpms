@@ -4,7 +4,7 @@
 ?>
 <div id="article">
 <center>
-	<table border id="boardView">
+	<table id="boardView">
 		<tr>
 			<th>제목</th>
 			<td><?=$list[0]->btitle?></td>
@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><?=$list[0]->bcontent?></td>
+			<td><div style="height:470px;overflow:auto"><?=$list[0]->bcontent?></div></td>
 		</tr>
 	</table>
 
@@ -43,12 +43,10 @@
 	<?}?>
 	<br>
 	<div id="comment">
-		<div id="commentWrite">
-			<textarea style="width:90%;" id="commentWrite_content"></textarea> &nbsp;<input type="button" id="comment_submit" class="btn btn-defalt btn-sm" value="쓰기">
-		</div>
+		
 		<div id="commentView">
 		<br>
-			<table border style="width:100%;">
+			<table style="width:100%;">
 				<?
 
 					for($i=0;$i<count($comment);$i++){
@@ -64,6 +62,10 @@
 					}
 				?>
 			</table>
+		</div>
+		<br>
+		<div id="commentWrite">
+			<textarea style="width:90%;" id="commentWrite_content"></textarea> &nbsp;<input type="button" id="comment_submit" class="btn btn-defalt btn-sm" value="등록">
 		</div>
 	</div>
 </div>

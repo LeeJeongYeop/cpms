@@ -1,10 +1,23 @@
+<script>
+	$(document).ready(function(){
+		$('#board_search').keypress(function(){
+
+
+
+			if(event.keyCode==13){
+				
+				board_search('free');
+			}
+		})
+	})
+</script>
 <div id="article">
 <center>
 <div id='board'>
 	
 		<h1>게시판</h1>
 		<br>
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -39,10 +52,6 @@
 		
 	
 </div>
-<br>
-<br>
-<br>
-<br>
 <br>
 		<?=$page_links?>
 		<br>
