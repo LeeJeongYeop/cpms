@@ -11,7 +11,7 @@
 				</div>
 			</form>
 			<hr>
-			<form action="/index.php/code/attendInput">
+			<form action="/index.php/code/attendInput" method="post">
 				<div id="managementAttendTable">
 					<table id="attendTableManager" border="1" width="700px" height="200px">
 						<tr>
@@ -23,23 +23,28 @@
 							<th width="60px"><?=$i?>주차</th>
 							<? } } ?>
 						</tr>
-						<? foreach ($list as $row){ ?>
-						<tr>
-							<td><? echo $row['id']; ?></td>
-							<td><? echo $row['name']; ?></td>
-							<td><? echo $row['grp'] ?></td>
-							<?foreach($week as $week_row){?>
-							<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
-							<td>
-								<input type="text" id="<?=$row['id']?>_<?=$i?>" name="<?=$row['id']?>_<?=$i?>" class="form-control" value="<?=$row['id']?>_<?=$i?>">
-							</td>
-							<? } } ?>
-						</tr>
-						<? } ?>
-					</table>
-				</div>
-				<input type="submit" value="입력" style="font-size:20px" class='btn btn-default btn-sm'>
-			</form>
-		</div>
-	</center>
-</div>
+						<? 
+						$count=0;
+						foreach ($list as $row){
+							++$count;
+							?>
+							<tr>
+								<td><? echo $row['id']; ?></td>
+								<td><? echo $row['name']; ?></td>
+								<td><? echo $row['grp'] ?></td>
+								<?foreach($week as $week_row){?>
+								<? for($i=1; $i<=$week_row['count(*)']-1; $i++){ ?>
+								<td>
+								<?$weekView = $i."week"?>
+									<input value="<?=$row[$weekView]?>" type="text" id="<?=$count?>_<?=$i?>" name="<?=$count?>_<?=$i?>" class="form-control">
+								</td>
+								<? } } ?>
+							</tr>
+							<? } ?>
+						</table>
+					</div>
+					<input type="submit" value="입력" style="font-size:20px" class='btn btn-default btn-sm'>
+				</form>
+			</div>
+		</center>
+	</div>

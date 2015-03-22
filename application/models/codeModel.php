@@ -22,146 +22,146 @@ class CodeModel extends CI_Model{
 	}
 	function board($num,$local,$category){
 		$strQuery="(select bid,btitle,name,bdate,category
-					from board join member
-					on board.uid=member.id
-					where category='notice'
-					order by bid desc
-					limit 3)
-					union
-					(select bid,btitle,name,bdate,category
-					from board join member
-					on board.uid=member.id
-					where category='$category')
-					order by category desc,bid desc
-					limit $local,$num";
-		return $this->db->query($strQuery)->result();
-	}
-	function boardCount($category){
-		$strQuery="(select bid,category
-					from board
-					where category='notice'
-					order by bid desc
-					limit 3)
-					union
-					(select bid,category
-					from board
-					where category='$category')";
-		return $this->db->query($strQuery)->num_rows();
-	}
+			from board join member
+			on board.uid=member.id
+			where category='notice'
+			order by bid desc
+			limit 3)
+union
+(select bid,btitle,name,bdate,category
+	from board join member
+	on board.uid=member.id
+	where category='$category')
+order by category desc,bid desc
+limit $local,$num";
+return $this->db->query($strQuery)->result();
+}
+function boardCount($category){
+	$strQuery="(select bid,category
+		from board
+		where category='notice'
+		order by bid desc
+		limit 3)
+union
+(select bid,category
+	from board
+	where category='$category')";
+return $this->db->query($strQuery)->num_rows();
+}
 
-	function boardView($no){
-		$this->db->where('bid',$no);
-		$this->db->select('uid,bid,btitle,files,orig_name,name,bcontent,bdate');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		return $this->db->get()->result();
-	}
-	function boardUpdate($bid,$bcontent,$orig_name,$file_name){
-		$data=array('bcontent' =>$bcontent,
-			'orig_name' =>$orig_name,
-			'files' =>$file_name);
-		$this->db->where('bid',$bid);
-		$this->db->update('board',$data);
-	}
-	function boardCategory($bid){
-		$this->db->where('bid',$bid);
-		$this->db->select('category');
-		$this->db->from('board');
-		return $this->db->get()->result();
-	}
-	function boardDelete($no){
-		$this->db->where('bid',$no);
-		$this->db->delete('board');
-	}
-	function boardSearchAll($category,$num,$local,$search){
+function boardView($no){
+	$this->db->where('bid',$no);
+	$this->db->select('uid,bid,btitle,files,orig_name,name,bcontent,bdate');
+	$this->db->from('board');
+	$this->db->join('member','member.id=board.uid');
+	return $this->db->get()->result();
+}
+function boardUpdate($bid,$bcontent,$orig_name,$file_name){
+	$data=array('bcontent' =>$bcontent,
+		'orig_name' =>$orig_name,
+		'files' =>$file_name);
+	$this->db->where('bid',$bid);
+	$this->db->update('board',$data);
+}
+function boardCategory($bid){
+	$this->db->where('bid',$bid);
+	$this->db->select('category');
+	$this->db->from('board');
+	return $this->db->get()->result();
+}
+function boardDelete($no){
+	$this->db->where('bid',$no);
+	$this->db->delete('board');
+}
+function boardSearchAll($category,$num,$local,$search){
 
-		$where= "category ='".$category."' and btitle like '%".$search."%' or category='".$category."' and bcontent like '%".$search."%' ";
-		$this->db->where($where);
-		$this->db->limit($num,$local);
-		$this->db->select('bid,btitle,name,bdate,category');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-
-
-		$this->db->order_by("bid", "desc"); 
-		return $this->db->get()->result();
-	}
-	function boardSearchTitle($category,$num,$local,$search){
-		$this->db->limit($num,$local);
-		$this->db->where('category',$category);
-
-		$this->db->select('bid,btitle,name,bdate,category');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		$this->db->like('name',$search);
-		$this->db->order_by("bid", "desc"); 
-		return $this->db->get()->result();
-	}
-	function boardSearchAllCount($category,$search){
-		$where= "category ='".$category."' and btitle like '%".$search."%' or category ='".$category."' and bcontent like '%".$search."%' ";
-		$this->db->where($where);
-
-		$this->db->from('board');
+	$where= "category ='".$category."' and btitle like '%".$search."%' or category='".$category."' and bcontent like '%".$search."%' ";
+	$this->db->where($where);
+	$this->db->limit($num,$local);
+	$this->db->select('bid,btitle,name,bdate,category');
+	$this->db->from('board');
+	$this->db->join('member','member.id=board.uid');
 
 
-		return $this->db->count_all_results();
-	}
-	function boardSearchTitleCount($category,$search){
-		$this->db->where('category',$category);
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		$this->db->like('name',$search);
-		return $this->db->count_all_results();
-	}
-	function commentWrite($bid,$uid,$ccontent){
-		$insertdb=array(
-			'bid'=>$bid,
-			'uid'=>$uid,
-			'ccontent'=>$ccontent
-			);
-		$this->db->insert('board_comment',$insertdb);
-	}
-	function commentView($bid){
-		$this->db->where('bid',$bid);
-		$this->db->select('bid,cid,uid,name,ccontent,cdate');
-		$this->db->from('board_comment');
-		$this->db->join('member','member.id=board_comment.uid');
-		return $this->db->get()->result();
-	}
-	function commentRemove($cid){
-		$this->db->where('cid',$cid);
-		$this->db->delete('board_comment');
-	}
-	function commentCount(){
-		$this->db->select ('bid,count(bid) as bcount');
-		$this->db->from('board_comment');
-		$this->db->group_by('bid');
-		$this->db->order_by('bid','desc');
-		return $this->db->get()->result();
-	}
-	function groupPage(){
-		$this->db->where('authority !=','관리자');
-		$this->db->select('distinct grp',false);
-		$this->db->from('member');
-		$this->db->order_by('grp');
-		return $this->db->get()->result();
-	}
-	function groupBoard($num,$local,$category){
-		$this->db->where('category',$category);
-		$this->db->select('bid,btitle,name,bdate,category');
-		$this->db->from('board');
-		$this->db->join('member','member.id=board.uid');
-		$this->db->order_by('bid','desc');
-		return $this->db->get()->result();
-		
-	}
-	function groupBoardCount($category){
-		$this->db->where('category',$category);
-		$this->db->select('bid,category');
-		$this->db->from('board');
-		return $this->db->get()->num_rows();
+	$this->db->order_by("bid", "desc"); 
+	return $this->db->get()->result();
+}
+function boardSearchTitle($category,$num,$local,$search){
+	$this->db->limit($num,$local);
+	$this->db->where('category',$category);
+
+	$this->db->select('bid,btitle,name,bdate,category');
+	$this->db->from('board');
+	$this->db->join('member','member.id=board.uid');
+	$this->db->like('name',$search);
+	$this->db->order_by("bid", "desc"); 
+	return $this->db->get()->result();
+}
+function boardSearchAllCount($category,$search){
+	$where= "category ='".$category."' and btitle like '%".$search."%' or category ='".$category."' and bcontent like '%".$search."%' ";
+	$this->db->where($where);
+
+	$this->db->from('board');
+
+
+	return $this->db->count_all_results();
+}
+function boardSearchTitleCount($category,$search){
+	$this->db->where('category',$category);
+	$this->db->from('board');
+	$this->db->join('member','member.id=board.uid');
+	$this->db->like('name',$search);
+	return $this->db->count_all_results();
+}
+function commentWrite($bid,$uid,$ccontent){
+	$insertdb=array(
+		'bid'=>$bid,
+		'uid'=>$uid,
+		'ccontent'=>$ccontent
+		);
+	$this->db->insert('board_comment',$insertdb);
+}
+function commentView($bid){
+	$this->db->where('bid',$bid);
+	$this->db->select('bid,cid,uid,name,ccontent,cdate');
+	$this->db->from('board_comment');
+	$this->db->join('member','member.id=board_comment.uid');
+	return $this->db->get()->result();
+}
+function commentRemove($cid){
+	$this->db->where('cid',$cid);
+	$this->db->delete('board_comment');
+}
+function commentCount(){
+	$this->db->select ('bid,count(bid) as bcount');
+	$this->db->from('board_comment');
+	$this->db->group_by('bid');
+	$this->db->order_by('bid','desc');
+	return $this->db->get()->result();
+}
+function groupPage(){
+	$this->db->where('authority !=','관리자');
+	$this->db->select('distinct grp',false);
+	$this->db->from('member');
+	$this->db->order_by('grp');
+	return $this->db->get()->result();
+}
+function groupBoard($num,$local,$category){
+	$this->db->where('category',$category);
+	$this->db->select('bid,btitle,name,bdate,category');
+	$this->db->from('board');
+	$this->db->join('member','member.id=board.uid');
+	$this->db->order_by('bid','desc');
+	return $this->db->get()->result();
+
+}
+function groupBoardCount($category){
+	$this->db->where('category',$category);
+	$this->db->select('bid,category');
+	$this->db->from('board');
+	return $this->db->get()->num_rows();
 	
-	}
+}
 
 /*  관리자 정보 수정  */
 	function managerModify($id){  // 회원 본인 정보수정과 같이 사용
@@ -222,7 +222,6 @@ class CodeModel extends CI_Model{
 	}
 	
 	function attendWeekModify($max){
-		
 		$currentWeek=$this->db->query('select * from attend')->num_fields();
 		if($currentWeek-1>$max){
 			for($i=$currentWeek-1;$i>$max;$i--){
@@ -240,6 +239,35 @@ class CodeModel extends CI_Model{
 	function attendweekload(){
 		$strQuery=" select count(*) from information_schema.columns where table_name='attend' ";
 		return $this->db->query($strQuery)->result_array();
+	}
+
+	function attendWeekCheck(){
+		$currentWeek=$this->db->query('select * from attend')->num_fields();
+		return ($currentWeek-1);
+	}
+
+	function attendUserCheck(){
+		return $this->db->query('select * from attend')->num_rows();
+	}
+
+	function attendUserId(){
+		$this->db->select('id');
+		$data=$this->db->get('attend')->result_array();
+
+		return $data;
+	}
+
+	function attendInput($attend, $week, $id){
+		$count=0;
+		for($i=0; $i<$week; $i++){
+			foreach ($id as $row) {
+				$temp=$row['id'];
+				$cweek=($i+1)."week";
+				$qry="update attend set $cweek=$attend[$count] where id='$temp'";
+				$this->db->query($qry);
+				$count++;
+			}
+		}
 	}
 }
 ?>

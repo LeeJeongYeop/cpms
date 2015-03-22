@@ -752,7 +752,18 @@ class Code extends CI_Controller{
 	}
 
 	public function attendInput(){
-		
+		$week=$this->codeModel->attendWeekCheck();
+		$user=$this->codeModel->attendUserCheck();
+		$id=$this->codeModel->attendUserId();
+		for($i=1; $i<=$week; $i++){
+			for($j=1; $j<=$user; $j++){
+				$temp=$j."_".$i;
+				$attend[]=$this->input->post($temp);
+			}
+		}
+		$this->codeModel->attendInput($attend, $week, $id);
+
+		redirect('/code/managementAttend');
 	}
 }
 ?>
