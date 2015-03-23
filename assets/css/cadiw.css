@@ -298,3 +298,6 @@ table th{
 #commentView table tr{
 	border-bottom:1px solid #717171;
 }
+#comment{
+	background:#F9F9F9;
+}
