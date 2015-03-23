@@ -41,9 +41,9 @@
 				<input type="hidden" id="auth" name="auth" value="관리자">
 				<hr>
 				<div id="modifyBtn">
-					<input type="button" value="수정" onclick="managerModify(this.form)">
-					<input type="reset" value="취소">
-					<input type="button" value="돌아가기" onclick="location='/code/cadiw'">
+					<input type="button" class="btn btn-default btn-sm" value="수정" onclick="managerModify(this.form)">
+					<input type="reset" class="btn btn-default btn-sm" value="취소">
+					<input type="button" class="btn btn-default btn-sm" value="돌아가기" onclick="location='/code/cadiw'">
 				</div>
 			</form>
 		</div>

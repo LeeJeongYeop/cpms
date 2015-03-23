@@ -230,7 +230,7 @@ function groupBoardCount($category){
 		}
 		else if($currentWeek-1<$max){
 			for($i=$currentWeek;$i<=$max;$i++){
-				$this->db->query('alter table attend add ('.$i.'week integer(2))');
+				$this->db->query('alter table attend add ('.$i.'week integer(2) default 0)');
 			}
 		}
 
