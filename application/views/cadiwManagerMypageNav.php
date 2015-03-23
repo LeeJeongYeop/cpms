@@ -7,4 +7,11 @@ if($udata['uauth']=='관리자'){?>
 	<a href="/index.php/code/memberManagement"><span>회원 관리</span></a>
 	<a href="/index.php/code/managementAttend"><span id="managerMypageNavRight">출석 관리</span></a>
 </div>
-<?}?>
+<?}else{?>
+
+<div id="managerMypageNav">
+	<a href="/index.php/code/modify"><span id="managerMypageNavLeft">내 정보수정</span></a>
+	<a href="/index.php/code/memberManagement"><span>회원 관리</span></a>
+	<a href="/index.php/code/managementAttend"><span id="managerMypageNavRight">출석 확인</span></a>
+</div>
+<? } ?>

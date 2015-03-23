@@ -738,6 +738,7 @@ class Code extends CI_Controller{
 			$this->load->view('cadiwManagerMypageNav');
 			$data['list']=$this->codeModel->attendlist();
 			$data['week']=$this->codeModel->attendweekload();
+			$data['sum']=$this->codeModel->attendSum();
 			$this->load->view('cadiwManagementAttend',$data);
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";

@@ -24,7 +24,7 @@
 						<th>이름</th>
 						<?
 						foreach ($udata as $row) {?>
-						<td><input type="text" id="name" name="name" value="<?=$row->name?>" class="form-control"></td>
+						<td><input type="text" id="name" name="name" readonly value="<?=$row->name?>" class="form-control"></td>
 						<? } ?>
 					</tr>
 					<tr>

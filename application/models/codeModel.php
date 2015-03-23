@@ -233,7 +233,6 @@ function groupBoardCount($category){
 				$this->db->query('alter table attend add ('.$i.'week integer(2) default 0)');
 			}
 		}
-
 	}
 
 	function attendweekload(){
@@ -268,6 +267,21 @@ function groupBoardCount($category){
 				$count++;
 			}
 		}
+	}
+
+	function attendSum(){
+		$sum_str="";
+		$currentWeek=$this->db->query('select * from attend')->num_fields();
+		for($i=1; $i<=$currentWeek-1; $i++){
+			if($i!=$currentWeek-1){
+				$sum_str.=$i.'week+';
+			}else{
+				$sum_str.=$i.'week';
+			}
+		}
+		$qry_str=' select '.$sum_str.' "weeksum" from attend ';
+
+		return $this->db->query($qry_str)->result();
 	}
 }
 ?>

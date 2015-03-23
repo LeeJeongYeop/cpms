@@ -1,5 +1,6 @@
 body{
-	background:#CFCFCF;
+	background-repeat: no-repeat;
+	background-image: url(/assets/image/back.png);
 	font-family:"맑은고딕","Malgun Gothic";
 	font-weight:bold;
 }
@@ -16,6 +17,7 @@ table th{
 	margin:auto;
 	border-radius:20px;
 	height:1000px;
+	opacity: 0.87;
 	
 }
 #header{
