@@ -1,5 +1,6 @@
 body{
 	background-repeat: no-repeat;
+	background-size:100%;
 	background-image: url(/assets/image/back.png);
 	font-family:"맑은고딕","Malgun Gothic";
 	font-weight:bold;
